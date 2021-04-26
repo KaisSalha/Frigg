@@ -7,12 +7,12 @@ import Link from "next/link";
 
 export default function Header({ categories, locales }) {
   return (
-    <Popover className="relative">
+    <Popover className="relative bg-white">
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <div className="flex justify-between items-center py-6 md:justify-start md:space-x-10">
-              <div className="flex justify-start lg:w-0 lg:flex-1">
+            <div className="flex justify-between items-center py-4 md:justify-start md:space-x-10">
+              <div className="flex justify-start lg:w-0 lg:flex-1 cursor-pointer">
                 <Link href="/">
                   <img
                     className="h-8 w-auto sm:h-10"
@@ -32,7 +32,7 @@ export default function Header({ categories, locales }) {
                   <Link key={category.name} href={`/${category.slug}`}>
                     <div
                       key={category.name}
-                      className="text-base font-medium text-gray-500 hover:text-gray-900"
+                      className="font-medium text-base text-gray-500 hover:text-gray-900 hover:cursor-pointer"
                     >
                       {category.name}
                     </div>

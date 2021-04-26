@@ -4,7 +4,19 @@ import Header from "../components/Header";
 import ArticlesList from "../components/ArticlesList";
 import fetcher from "../helpers/fetcher";
 
-export default function Home({ articles, categories, locales }) {
+import useLocales from "../hooks/useLocales";
+import { useCategories } from "../hooks/useCategory";
+import { useArticles } from "../hooks/useArticle";
+
+export default function Home({
+  initialArticles,
+  initialCategories,
+  initialLocales
+}) {
+  const { articles } = useArticles(initialArticles);
+  const { categories } = useCategories(initialCategories);
+  const { locales } = useLocales(initialLocales);
+
   return (
     <>
       <Header categories={categories} locales={locales} />
@@ -22,17 +34,17 @@ export default function Home({ articles, categories, locales }) {
 }
 
 export async function getStaticProps() {
-  const articles = await fetcher(
+  const initialArticles = await fetcher(
     `${process.env.NEXT_PUBLIC_API_ENDPOINT}/en/articles`
   );
 
-  const categories = await fetcher(
+  const initialCategories = await fetcher(
     `${process.env.NEXT_PUBLIC_API_ENDPOINT}/en/categories`
   );
 
-  const locales = await fetcher(
+  const initialLocales = await fetcher(
     `${process.env.NEXT_PUBLIC_API_ENDPOINT}/en/locales`
   );
 
-  return { props: { articles, categories, locales } };
+  return { props: { initialArticles, initialCategories, initialLocales } };
 }
