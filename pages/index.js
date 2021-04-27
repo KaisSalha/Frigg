@@ -1,25 +1,17 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import Header from "../components/Header";
 import ArticlesList from "../components/ArticlesList";
 import fetcher from "../helpers/fetcher";
 
-import useLocales from "../hooks/useLocales";
-import { useCategories } from "../hooks/useCategory";
 import { useArticles } from "../hooks/useArticle";
 
-export default function Home({
-  initialArticles,
-  initialCategories,
-  initialLocales
-}) {
+import { getLayout } from "../components/layouts/SiteLayout";
+
+const Home = ({ initialArticles }) => {
   const { articles } = useArticles(initialArticles);
-  const { categories } = useCategories(initialCategories);
-  const { locales } = useLocales(initialLocales);
 
   return (
     <>
-      <Header categories={categories} locales={locales} />
       <Head>
         <title>Home</title>
         <link rel="icon" href="/favicon.ico" />
@@ -31,7 +23,11 @@ export default function Home({
       </div>
     </>
   );
-}
+};
+
+Home.getLayout = getLayout;
+
+export default Home;
 
 export async function getStaticProps() {
   const initialArticles = await fetcher(

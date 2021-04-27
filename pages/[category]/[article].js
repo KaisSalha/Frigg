@@ -1,46 +1,37 @@
 import Head from "next/head";
-import Header from "../../components/Header";
 import fetcher from "../../helpers/fetcher";
 import ReactMarkdown from "react-markdown";
 import { useRouter } from "next/router";
 
 import useArticle from "../../hooks/useArticle";
-import useLocales from "../../hooks/useLocales";
-import { useCategories } from "../../hooks/useCategory";
+import { getLayout } from "../../components/layouts/SiteLayout";
 
-export default function ArticlePage({
-  initialArticle,
-  initialCategories,
-  initialLocales
-}) {
+const ArticlePage = ({ initialArticle }) => {
   const router = useRouter();
   const slug = router.query.article;
 
   const { article } = useArticle(slug, initialArticle);
-  const { categories } = useCategories(initialCategories);
-  const { locales } = useLocales(initialLocales);
 
-  if (article && categories) {
-    return (
-      <>
-        <Header categories={categories} locales={locales} />
-        <Head>
-          <title>{article.title}</title>
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
-        <main>
-          <div className="relative py-16 bg-white overflow-hidden">
-            <div className="mt-6 prose prose-indigo prose-lg text-gray-500 mx-auto">
-              <ReactMarkdown children={article.body} />
-            </div>
+  return (
+    <>
+      <Head>
+        <title>{article.title}</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <main>
+        <div className="relative py-16 bg-white overflow-hidden">
+          <div className="mt-6 prose prose-indigo prose-lg text-gray-500 mx-auto">
+            <ReactMarkdown children={article.body} />
           </div>
-        </main>
-      </>
-    );
-  } else {
-    return "";
-  }
-}
+        </div>
+      </main>
+    </>
+  );
+};
+
+ArticlePage.getLayout = getLayout;
+
+export default ArticlePage;
 
 export async function getStaticProps(context) {
   const slug = context.params.article;

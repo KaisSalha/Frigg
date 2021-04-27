@@ -1,32 +1,22 @@
 import Head from "next/head";
-import Header from "../../components/Header";
 import fetcher from "../../helpers/fetcher";
 import { useRouter } from "next/router";
 
-import useCategory, { useCategories } from "../../hooks/useCategory";
-import useLocales from "../../hooks/useLocales";
+import useCategory from "../../hooks/useCategory";
+import { getLayout } from "../../components/layouts/SiteLayout";
 
-export default function CategoryPage({
-  initialCategory,
-  initialCategories,
-  initialLocales
-}) {
+const CategoryPage = ({ initialCategory }) => {
   const router = useRouter();
   const slug = router.query.category;
 
   const { category } = useCategory(slug, initialCategory);
-  const { categories } = useCategories(initialCategories);
-  const { locales } = useLocales(initialLocales);
 
   return (
     <>
-      <div>
-        <Header categories={categories} locales={locales} />
-        <Head>
-          <title>{category.name}</title>
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
-      </div>
+      <Head>
+        <title>{category.name}</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <div
         className="relative flex flex-wrap content-center bg-center bg-cover h-auto w-screen min-h-3/4"
         style={{
@@ -47,7 +37,11 @@ export default function CategoryPage({
       </div>
     </>
   );
-}
+};
+
+CategoryPage.getLayout = getLayout;
+
+export default CategoryPage;
 
 export async function getStaticProps(context) {
   const slug = context.params.category;
