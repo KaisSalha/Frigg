@@ -1,4 +1,5 @@
 import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 import useLocales from "../../hooks/useLocales";
 import { useCategories } from "../../hooks/useCategory";
 
@@ -14,6 +15,7 @@ export const getLayout = page => {
     <SiteLayout>
       <Header categories={categories} locales={locales} />
       {page}
+      <Footer categories={categories} />
     </SiteLayout>
   );
 };
