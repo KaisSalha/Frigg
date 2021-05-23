@@ -55,7 +55,7 @@ export async function getStaticProps(context) {
   );
 
   const initialLocales = await fetcher(
-    `${process.env.NEXT_PUBLIC_API_ENDPOINT}/en/locales`
+    `${process.env.NEXT_PUBLIC_API_ENDPOINT}/locales`
   );
 
   return {

@@ -15,13 +15,10 @@ const navigation = {
   ],
   company: [
     { name: "About", href: "#" },
-    { name: "Blog", href: "#" },
     { name: "Jobs", href: "#" },
-    { name: "Press", href: "#" },
     { name: "Partners", href: "#" }
   ],
   legal: [
-    { name: "Claim", href: "#" },
     { name: "Privacy", href: "#" },
     { name: "Terms", href: "#" }
   ],
@@ -84,7 +81,7 @@ export default function Footer({ categories }) {
                       key={category.name}
                       className="text-base text-gray-300 hover:text-white"
                     >
-                      <Link href={category.slug}>{category.name}</Link>
+                      <Link href={`/${category.slug}`}>{category.name}</Link>
                     </li>
                   ))}
                 </ul>
