@@ -4,6 +4,10 @@ import ReactMarkdown from "react-markdown";
 import { useRouter } from "next/router";
 import Image from "next/image";
 
+import { getArticle } from "../api/[locale]/articles/[slug]";
+import { getCategories } from "../api/[locale]/categories/index";
+import { getLocales } from "../api/locales/index";
+
 import useArticle from "../../hooks/useArticle";
 import { getLayout } from "../../components/layouts/SiteLayout";
 
@@ -47,17 +51,11 @@ export default ArticlePage;
 export async function getStaticProps(context) {
   const slug = context.params.article;
 
-  const initialArticle = await fetcher(
-    `${process.env.NEXT_PUBLIC_API_ENDPOINT}/en/articles/${slug}`
-  );
+  const initialArticle = await getArticle("en", slug);
 
-  const initialCategories = await fetcher(
-    `${process.env.NEXT_PUBLIC_API_ENDPOINT}/en/categories`
-  );
+  const initialCategories = await getCategories("en", slug);
 
-  const initialLocales = await fetcher(
-    `${process.env.NEXT_PUBLIC_API_ENDPOINT}/locales`
-  );
+  const initialLocales = await getLocales();
 
   return {
     props: { initialArticle, initialCategories, initialLocales },

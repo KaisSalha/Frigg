@@ -2,12 +2,7 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-export default async (req, res) => {
-  if (req.method !== "GET")
-    return res.status(405).json({ message: "Method not allowed" });
-
-  const { locale_ref } = req.query;
-
+export async function getArticles(locale_ref) {
   const locale = await prisma.locales.findFirst({
     where: { ref: locale_ref }
   });
@@ -20,6 +15,14 @@ export default async (req, res) => {
       author: true
     }
   });
+
+  return articles;
+}
+
+export default async (req, res) => {
+  const { locale_ref } = req.query;
+
+  const articles = await getArticles(locale_ref);
 
   BigInt.prototype.toJSON = function () {
     return this.toString();

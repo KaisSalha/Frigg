@@ -2,6 +2,10 @@ import Head from "next/head";
 import fetcher from "../../helpers/fetcher";
 import { useRouter } from "next/router";
 
+import { getCategories } from "../api/[locale]/categories/index";
+import { getCategory } from "../api/[locale]/categories/[slug]";
+import { getLocales } from "../api/locales/index";
+
 import useCategory from "../../hooks/useCategory";
 import { getLayout } from "../../components/layouts/SiteLayout";
 
@@ -46,17 +50,11 @@ export default CategoryPage;
 export async function getStaticProps(context) {
   const slug = context.params.category;
 
-  const initialCategory = await fetcher(
-    `${process.env.NEXT_PUBLIC_API_ENDPOINT}/en/categories/${slug}`
-  );
+  const initialCategory = await getCategory("en", slug);
 
-  const initialCategories = await fetcher(
-    `${process.env.NEXT_PUBLIC_API_ENDPOINT}/en/categories`
-  );
+  const initialCategories = await getCategories("en");
 
-  const initialLocales = await fetcher(
-    `${process.env.NEXT_PUBLIC_API_ENDPOINT}/locales`
-  );
+  const initialLocales = await getLocales();
 
   return {
     props: { initialCategory, initialCategories, initialLocales },

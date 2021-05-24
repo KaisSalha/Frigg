@@ -1,7 +1,10 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import ArticlesList from "../components/ArticlesList";
-import fetcher from "../helpers/fetcher";
+
+import { getArticles } from "./api/[locale]/articles/index";
+import { getCategories } from "./api/[locale]/categories/index";
+import { getLocales } from "./api/locales/index";
 
 import { useArticles } from "../hooks/useArticle";
 
@@ -30,17 +33,11 @@ Home.getLayout = getLayout;
 export default Home;
 
 export async function getStaticProps() {
-  const initialArticles = await fetcher(
-    `${process.env.NEXT_PUBLIC_API_ENDPOINT}/en/articles`
-  );
+  const initialArticles = await getArticles("en");
 
-  const initialCategories = await fetcher(
-    `${process.env.NEXT_PUBLIC_API_ENDPOINT}/en/categories`
-  );
+  const initialCategories = await getCategories("en");
 
-  const initialLocales = await fetcher(
-    `${process.env.NEXT_PUBLIC_API_ENDPOINT}/locales`
-  );
+  const initialLocales = await getLocales();
 
   return { props: { initialArticles, initialCategories, initialLocales } };
 }
