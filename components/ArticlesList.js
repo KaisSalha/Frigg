@@ -2,7 +2,7 @@ import ArticleUnit from "./ArticleUnit";
 
 export default function ArticlesList({ articles }) {
   return (
-    <div className="relative pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
+    <div className="relative pb-20 px-4 sm:px-6 lg:pb-28 lg:px-8">
       <div className="relative max-w-7xl mx-auto">
         <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
           {articles.map(article => (

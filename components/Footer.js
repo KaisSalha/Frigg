@@ -8,15 +8,12 @@ const navigation = {
     { name: "Insights", href: "#" }
   ],
   support: [
-    { name: "Pricing", href: "#" },
-    { name: "Documentation", href: "#" },
-    { name: "Guides", href: "#" },
-    { name: "API Status", href: "#" }
+    { name: "Contact Us", href: "contact" },
+    { name: "Guides", href: "#" }
   ],
   company: [
-    { name: "About", href: "#" },
-    { name: "Jobs", href: "#" },
-    { name: "Partners", href: "#" }
+    { name: "About", href: "about" },
+    { name: "Jobs", href: "#" }
   ],
   legal: [
     { name: "Privacy", href: "#" },
@@ -86,19 +83,17 @@ export default function Footer({ categories }) {
                   ))}
                 </ul>
               </div>
-              <div className="mt-12 md:mt-0">
+              <div>
                 <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
                   Support
                 </h3>
                 <ul className="mt-4 space-y-4">
                   {navigation.support.map(item => (
-                    <li key={item.name}>
-                      <a
-                        href={item.href}
-                        className="text-base text-gray-300 hover:text-white"
-                      >
-                        {item.name}
-                      </a>
+                    <li
+                      key={item.name}
+                      className="text-base text-gray-300 hover:text-white"
+                    >
+                      <Link href={item.href}>{item.name}</Link>
                     </li>
                   ))}
                 </ul>
@@ -111,30 +106,26 @@ export default function Footer({ categories }) {
                 </h3>
                 <ul className="mt-4 space-y-4">
                   {navigation.company.map(item => (
-                    <li key={item.name}>
-                      <a
-                        href={item.href}
-                        className="text-base text-gray-300 hover:text-white"
-                      >
-                        {item.name}
-                      </a>
+                    <li
+                      key={item.name}
+                      className="text-base text-gray-300 hover:text-white"
+                    >
+                      <Link href={item.href}>{item.name}</Link>
                     </li>
                   ))}
                 </ul>
               </div>
-              <div className="mt-12 md:mt-0">
+              <div>
                 <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
                   Legal
                 </h3>
                 <ul className="mt-4 space-y-4">
                   {navigation.legal.map(item => (
-                    <li key={item.name}>
-                      <a
-                        href={item.href}
-                        className="text-base text-gray-300 hover:text-white"
-                      >
-                        {item.name}
-                      </a>
+                    <li
+                      key={item.name}
+                      className="text-base text-gray-300 hover:text-white"
+                    >
+                      <Link href={item.href}>{item.name}</Link>
                     </li>
                   ))}
                 </ul>
@@ -176,14 +167,16 @@ export default function Footer({ categories }) {
         <div className="mt-8 border-t border-gray-700 pt-8 md:flex md:items-center md:justify-between">
           <div className="flex space-x-6 md:order-2">
             {navigation.social.map(item => (
-              <a
+              <Link
                 key={item.name}
                 href={item.href}
                 className="text-gray-400 hover:text-gray-300"
               >
-                <span className="sr-only">{item.name}</span>
-                <item.icon className="h-6 w-6" aria-hidden="true" />
-              </a>
+                <>
+                  <span className="sr-only">{item.name}</span>
+                  <item.icon className="h-6 w-6" aria-hidden="true" />
+                </>
+              </Link>
             ))}
           </div>
           <p className="mt-8 text-base text-gray-400 md:mt-0 md:order-1">

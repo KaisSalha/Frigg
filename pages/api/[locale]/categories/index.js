@@ -22,8 +22,6 @@ export default async (req, res) => {
 
   const categories = await getCategories(locale_ref);
 
-  console.log(categories);
-
   BigInt.prototype.toJSON = function () {
     return this.toString();
   };
