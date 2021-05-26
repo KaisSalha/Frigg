@@ -1,15 +1,14 @@
 import Head from "next/head";
-import fetcher from "../../helpers/fetcher";
 import ReactMarkdown from "react-markdown";
 import { useRouter } from "next/router";
 import Image from "next/image";
 
-import { getArticle } from "../api/[locale]/articles/[slug]";
-import { getCategories } from "../api/[locale]/categories/index";
-import { getLocales } from "../api/locales/index";
+import { getArticle } from "pages/api/[locale]/articles/[slug]";
+import { getCategories } from "pages/api/[locale]/categories/index";
+import { getLocales } from "pages/api/locales/index";
 
-import useArticle from "../../hooks/useArticle";
-import { getLayout } from "../../components/layouts/SiteLayout";
+import useArticle from "hooks/useArticle";
+import { getLayout } from "components/layouts/SiteLayout";
 
 const ArticlePage = ({ initialArticle }) => {
   const router = useRouter();

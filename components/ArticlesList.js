@@ -1,4 +1,4 @@
-import ArticleUnit from "./ArticleUnit";
+import ArticleUnit from "components/ArticleUnit";
 
 export default function ArticlesList({ articles }) {
   return (

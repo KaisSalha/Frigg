@@ -1,9 +1,9 @@
 import Head from "next/head";
 
-import { getCategories } from "./api/[locale]/categories/index";
-import { getLocales } from "./api/locales/index";
+import { getCategories } from "pages/api/[locale]/categories/index";
+import { getLocales } from "pages/api/locales/index";
 
-import { getLayout } from "../components/layouts/SiteLayout";
+import { getLayout } from "components/layouts/SiteLayout";
 
 const people = [
   {

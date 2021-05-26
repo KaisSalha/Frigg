@@ -1,13 +1,12 @@
 import Head from "next/head";
-import fetcher from "../../helpers/fetcher";
 import { useRouter } from "next/router";
 
-import { getCategories } from "../api/[locale]/categories/index";
-import { getCategory } from "../api/[locale]/categories/[slug]";
-import { getLocales } from "../api/locales/index";
+import { getCategories } from "pages/api/[locale]/categories/index";
+import { getCategory } from "pages/api/[locale]/categories/[slug]";
+import { getLocales } from "pages/api/locales/index";
 
-import useCategory from "../../hooks/useCategory";
-import { getLayout } from "../../components/layouts/SiteLayout";
+import useCategory from "hooks/useCategory";
+import { getLayout } from "components/layouts/SiteLayout";
 
 const CategoryPage = ({ initialCategory }) => {
   const router = useRouter();

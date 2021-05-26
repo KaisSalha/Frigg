@@ -1,14 +1,14 @@
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
-import ArticlesList from "../components/ArticlesList";
+import styles from "styles/Home.module.css";
+import ArticlesList from "components/ArticlesList";
 
-import { getArticles } from "./api/[locale]/articles/index";
-import { getCategories } from "./api/[locale]/categories/index";
-import { getLocales } from "./api/locales/index";
+import { getArticles } from "pages/api/[locale]/articles/index";
+import { getCategories } from "pages/api/[locale]/categories/index";
+import { getLocales } from "pages/api/locales/index";
 
-import { useArticles } from "../hooks/useArticle";
+import { useArticles } from "hooks/useArticle";
 
-import { getLayout } from "../components/layouts/SiteLayout";
+import { getLayout } from "components/layouts/SiteLayout";
 
 const Home = ({ initialArticles }) => {
   const { articles } = useArticles(initialArticles);
