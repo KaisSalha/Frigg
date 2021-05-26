@@ -1,7 +1,7 @@
 import Head from "next/head";
 
 import { getCategories } from "pages/api/[locale]/categories/index";
-import { getLocales } from ".pages/api/locales/index";
+import { getLocales } from "pages/api/locales/index";
 
 import { ExternalLinkIcon } from "@heroicons/react/solid";
 
