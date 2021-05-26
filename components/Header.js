@@ -83,19 +83,16 @@ export default function Header({ categories, locales }) {
                 </div>
                 <div className="py-6 px-5 space-y-6">
                   <div className="grid grid-cols-2 gap-y-4 gap-x-8">
-                    <a
-                      href="#"
-                      className="text-base font-medium text-gray-900 hover:text-gray-700"
-                    >
-                      Pricing
-                    </a>
-
-                    <a
-                      href="#"
-                      className="text-base font-medium text-gray-900 hover:text-gray-700"
-                    >
-                      Docs
-                    </a>
+                    {categories.map(category => (
+                      <Link key={category.name} href={`/${category.slug}`}>
+                        <div
+                          key={category.name}
+                          className="text-base font-medium text-gray-900 hover:text-gray-700"
+                        >
+                          {category.name}
+                        </div>
+                      </Link>
+                    ))}
                   </div>
                 </div>
               </div>
