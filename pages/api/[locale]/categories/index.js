@@ -1,6 +1,4 @@
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import prisma from "helpers/prisma";
 
 export async function getCategories(locale_ref) {
   const locale = await prisma.locales.findFirst({
