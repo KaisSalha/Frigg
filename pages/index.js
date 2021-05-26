@@ -35,12 +35,7 @@ const Home = ({ initialArticles }) => {
                 </h2>
               </div>
               <div className="w-full custom-height mt-8 lg:mt-0 rounded-3xl relative">
-                <a tabIndex={-1} href="javascript:void(0)">
-                  <img
-                    src="https://i.ibb.co/dLsYS9C/Group-1.png"
-                    alt="Group-1"
-                  />
-                </a>
+                <img src="https://i.ibb.co/dLsYS9C/Group-1.png" alt="Group-1" />
               </div>
             </div>
           </div>
