@@ -16,8 +16,8 @@ const navigation = {
     { name: "Jobs", href: "#" }
   ],
   legal: [
-    { name: "Privacy", href: "#" },
-    { name: "Terms", href: "#" }
+    { name: "Privacy", href: "privacy" },
+    { name: "Terms", href: "terms" }
   ],
   social: [
     {
