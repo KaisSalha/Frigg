@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default function Header({ categories, locales }) {
   return (
-    <Popover className="relative bg-white">
+    <Popover className="relative bg-white z-20">
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-4 sm:px-6">

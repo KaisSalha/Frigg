@@ -24,7 +24,7 @@ const ArticlePage = ({ initialArticle }) => {
       </Head>
       <main>
         <div className="relative py-16 bg-white overflow-hidden">
-          <div className="mt-6 prose prose-indigo prose-xl text-gray-500 mx-auto">
+          <div className="mt-6 prose prose-indigo prose-xl text-gray-500 mx-4 lg:mx-auto">
             <h1 className="text-center">{article.title}</h1>
             <Image
               width={10}
