@@ -81,17 +81,19 @@ export default function Header({ categories, locales }) {
                     <nav className="grid gap-y-8"></nav>
                   </div>
                 </div>
-                <div className="py-6 px-5 space-y-6">
+                <div className="pb-6 px-5 space-y-6">
                   <div className="grid grid-cols-2 gap-y-4 gap-x-8">
                     {categories.map(category => (
-                      <Link key={category.name} href={`/${category.slug}`}>
-                        <div
-                          key={category.name}
-                          className="text-base font-medium text-gray-900 hover:text-gray-700"
-                        >
-                          {category.name}
-                        </div>
-                      </Link>
+                      <Popover.Button>
+                        <Link key={category.name} href={`/${category.slug}`}>
+                          <div
+                            key={category.name}
+                            className="text-base font-medium text-gray-900 hover:text-gray-700"
+                          >
+                            {category.name}
+                          </div>
+                        </Link>
+                      </Popover.Button>
                     ))}
                   </div>
                 </div>
