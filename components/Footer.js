@@ -8,16 +8,16 @@ const navigation = {
     { name: "Insights", href: "#" }
   ],
   support: [
-    { name: "Contact Us", href: "contact" },
+    { name: "Contact Us", href: "/contact" },
     { name: "Guides", href: "#" }
   ],
   company: [
-    { name: "About", href: "about" },
+    { name: "About", href: "/about" },
     { name: "Jobs", href: "#" }
   ],
   legal: [
-    { name: "Privacy", href: "privacy" },
-    { name: "Terms", href: "terms" }
+    { name: "Privacy", href: "/privacy" },
+    { name: "Terms", href: "/terms" }
   ],
   social: [
     {

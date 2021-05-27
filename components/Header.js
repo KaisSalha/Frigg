@@ -84,7 +84,7 @@ export default function Header({ categories, locales }) {
                 <div className="pb-6 px-5 space-y-6">
                   <div className="grid grid-cols-2 gap-y-4 gap-x-8">
                     {categories.map(category => (
-                      <Popover.Button>
+                      <Popover.Button key={category.name}>
                         <Link key={category.name} href={`/${category.slug}`}>
                           <div
                             key={category.name}
