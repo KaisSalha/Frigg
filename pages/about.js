@@ -87,14 +87,14 @@ const About = () => {
                 role="contentinfo"
                 className="focus:outline-none text-sm sm:text-base leading-normal text-gray-600 text-justify lg:text-left"
               >
-                Vadoo guides new immigrants to Canada on how to start their
-                life. The point of using Lorem Ipsum is that it has a
-                more-or-less normal distribution of letters, as opposed to using
-                'Content here, content here', making it look like readable
-                English. Many desktop publishing packages and web page editors
-                now use Lorem Ipsum as their default model text, and a search
-                for 'lorem ipsum' will uncover many web sites still in their
-                infancy.
+                {process.env.NEXT_PUBLIC_APP_NAME} guides new immigrants to
+                Canada on how to start their life. The point of using Lorem
+                Ipsum is that it has a more-or-less normal distribution of
+                letters, as opposed to using 'Content here, content here',
+                making it look like readable English. Many desktop publishing
+                packages and web page editors now use Lorem Ipsum as their
+                default model text, and a search for 'lorem ipsum' will uncover
+                many web sites still in their infancy.
               </p>
             </div>
           </div>
@@ -237,10 +237,10 @@ const About = () => {
               <blockquote className="relative">
                 <div className="text-2xl leading-9 font-medium text-gray-900">
                   <p>
-                    Vadoo is published by a passionate team of people on a
-                    mission to help you assimilate smoothly in Canada. We aspire
-                    to earn your trust by providing you with genuine and helpful
-                    information.
+                    {process.env.NEXT_PUBLIC_APP_NAME} is published by a
+                    passionate team of people on a mission to help you
+                    assimilate smoothly in Canada. We aspire to earn your trust
+                    by providing you with genuine and helpful information.
                   </p>
                 </div>
                 <footer className="mt-8">
@@ -257,7 +257,7 @@ const About = () => {
                         Kais Salha
                       </div>
                       <div className="text-base font-medium text-indigo-600">
-                        CEO, Vadoo
+                        CEO, {process.env.NEXT_PUBLIC_APP_NAME}
                       </div>
                     </div>
                   </div>
