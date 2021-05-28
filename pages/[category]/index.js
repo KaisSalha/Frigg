@@ -62,8 +62,16 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
+  const initialCategories = await getCategories("en");
+
+  const paths = initialCategories.map(category => ({
+    params: {
+      category: category.slug
+    }
+  }));
+
   return {
-    paths: [],
+    paths,
     fallback: "blocking"
   };
 }

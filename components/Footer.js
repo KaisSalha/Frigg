@@ -9,11 +9,11 @@ const navigation = {
   ],
   support: [
     { name: "Contact Us", href: "/contact" },
-    { name: "Guides", href: "#" }
+    { name: "Advertise", href: "#" }
   ],
   company: [
     { name: "About", href: "/about" },
-    { name: "Jobs", href: "#" }
+    { name: "Careers", href: "#" }
   ],
   legal: [
     { name: "Privacy", href: "/privacy" },
