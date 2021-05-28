@@ -6,7 +6,7 @@ export async function getArticles(locale_ref) {
   });
 
   const articles = await prisma.articles.findMany({
-    where: { locale_id: parseInt(locale.id) },
+    where: { locale_id: parseInt(locale.id), status_id: 3 },
     include: {
       category: true,
       assets: true,
