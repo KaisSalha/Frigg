@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 
 import { getCategories } from "pages/api/[locale]/categories/index";
 import { getCategory } from "pages/api/[locale]/categories/[slug]";
-import { getLocales } from "pages/api/locales/index";
 
 import useCategory from "hooks/useCategory";
 import { getLayout } from "components/layouts/SiteLayout";
@@ -46,23 +45,21 @@ CategoryPage.getLayout = getLayout;
 
 export default CategoryPage;
 
-export async function getStaticProps(context) {
-  const slug = context.params.category;
+export async function getStaticProps({ params, locale }) {
+  const slug = params.category;
 
-  const initialCategory = await getCategory("en", slug);
+  const initialCategory = await getCategory(locale, slug);
 
-  const initialCategories = await getCategories("en");
-
-  const initialLocales = await getLocales();
+  const initialCategories = await getCategories(locale);
 
   return {
-    props: { initialCategory, initialCategories, initialLocales },
+    props: { initialCategory, initialCategories },
     revalidate: 60
   };
 }
 
-export async function getStaticPaths() {
-  const initialCategories = await getCategories("en");
+export async function getStaticPaths({ locale }) {
+  const initialCategories = await getCategories(locale);
 
   const paths = initialCategories.map(category => ({
     params: {

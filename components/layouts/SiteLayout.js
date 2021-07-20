@@ -1,15 +1,16 @@
+import { useRouter } from "next/router";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import useLocales from "../../hooks/useLocales";
 import { useCategories } from "../../hooks/useCategory";
 
-const SiteLayout = ({ children }) => <div>{children}</div>;
+const SiteLayout = ({ children }) => <>{children}</>;
 
 export const getLayout = page => {
+  const { locales } = useRouter();
+
   const { initialCategories, initialLocales } = page.props;
 
   const { categories } = useCategories(initialCategories);
-  const { locales } = useLocales(initialLocales);
 
   return (
     <SiteLayout>

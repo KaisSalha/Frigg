@@ -1,7 +1,6 @@
 import Head from "next/head";
 
 import { getCategories } from "pages/api/[locale]/categories/index";
-import { getLocales } from "pages/api/locales/index";
 
 import { ExternalLinkIcon } from "@heroicons/react/solid";
 
@@ -236,10 +235,8 @@ Contact.getLayout = getLayout;
 
 export default Contact;
 
-export async function getStaticProps() {
-  const initialCategories = await getCategories("en");
+export async function getStaticProps({ locale }) {
+  const initialCategories = await getCategories(locale);
 
-  const initialLocales = await getLocales();
-
-  return { props: { initialCategories, initialLocales } };
+  return { props: { initialCategories } };
 }

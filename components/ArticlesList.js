@@ -2,14 +2,10 @@ import ArticleUnit from "components/ArticleUnit";
 
 export default function ArticlesList({ articles }) {
   return (
-    <div className="relative pb-20 px-4 sm:px-6 lg:pb-28 lg:px-8">
-      <div className="relative max-w-7xl mx-auto">
-        <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
-          {articles.map(article => (
-            <ArticleUnit article={article} key={article.id} />
-          ))}
-        </div>
-      </div>
+    <div className="mt-12 mx-auto grid gap-5 lg:grid-cols-3 md:grid-cols-2">
+      {articles.map(article => (
+        <ArticleUnit article={article} key={article.id} />
+      ))}
     </div>
   );
 }
