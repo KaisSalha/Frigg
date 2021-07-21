@@ -1,16 +1,12 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
-import { nav, left, right } from "styles/components/Header.module.scss";
+import styles from "styles/components/Header.module.scss";
 import LocaleDropdown from "components/LocaleDropdown";
 
 export default function Header({ categories }) {
-  const router = useRouter();
-  const { locale, locales } = router;
-
   return (
-    <nav className={nav}>
-      <section className={left}>
-        <Link href={"/"}>
+    <nav className={styles.nav}>
+      <section className={styles.left}>
+        <Link href="/">
           <img
             class="h-8 w-auto sm:h-10"
             src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
@@ -27,7 +23,7 @@ export default function Header({ categories }) {
           </ul>
         </section>
       </section>
-      <section className={right}>
+      <section className={styles.right}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6"
