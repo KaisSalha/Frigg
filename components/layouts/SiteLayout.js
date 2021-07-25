@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import Head from "next/head";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { useCategories } from "../../hooks/useCategory";
@@ -13,11 +14,19 @@ export const getLayout = page => {
   const { categories } = useCategories(initialCategories);
 
   return (
-    <SiteLayout>
-      <Header categories={categories} locales={locales} />
-      {page}
-      <Footer categories={categories} />
-    </SiteLayout>
+    <>
+      <Head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0"
+        />
+      </Head>
+      <SiteLayout>
+        <Header categories={categories} locales={locales} />
+        {page}
+        <Footer categories={categories} />
+      </SiteLayout>
+    </>
   );
 };
 

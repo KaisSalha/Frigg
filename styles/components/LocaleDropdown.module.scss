@@ -34,4 +34,20 @@
   border-radius: 0.375rem;
   background-color: white;
   text-transform: uppercase;
+
+  .item {
+    display: block;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem /* 14px */;
+    line-height: 1.25rem /* 20px */;
+  }
+
+  .active {
+    background-color: rgba(243, 244, 246, 1);
+    color: rgba(17, 24, 39, 1);
+  }
+
+  .inactive {
+    color: rgba(55, 65, 81, 1);
+  }
 }

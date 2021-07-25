@@ -36,13 +36,11 @@ const LocaleDropdown = () => {
               {locales.map(locale => (
                 <Menu.Item key={locale}>
                   {({ active }) => (
-                    <a href={locale}>
+                    <a href={locale == "en" ? "/" : locale}>
                       <div
                         className={classNames(
-                          active
-                            ? "bg-gray-100 text-gray-900"
-                            : "text-gray-700",
-                          "block px-4 py-2 text-sm"
+                          active ? styles.active : styles.inactive,
+                          styles.item
                         )}
                       >
                         {locale}

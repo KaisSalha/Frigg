@@ -1,4 +1,9 @@
 @import "styles/mixins/layout.scss";
+@import "styles/mixins/breakpoints.scss";
+
+.nav_container {
+  border-bottom: 2px solid #232424;
+}
 
 .nav {
   @include container;
@@ -6,13 +11,13 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  height: 50px;
+  height: 60px;
 
   ul {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 1em;
+    gap: 2em;
   }
 }
 
@@ -20,7 +25,65 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 2em;
+
+  .logo {
+    cursor: pointer;
+  }
+}
+
+.mid {
+  color: #929292;
+  font-weight: bold;
+
+  button {
+    display: none;
+  }
+
+  a {
+    cursor: pointer;
+  }
+
+  @include md-down {
+    display: block;
+    font-size: 21px;
+    z-index: 30;
+    position: absolute;
+    overflow: hidden;
+    inset-block-start: 0;
+    inset-inline-end: 0;
+    background: rgba(0, 0, 0, 0.95);
+    color: white;
+    width: 50%;
+    height: 100%;
+    border-right: #ccc 1px solid;
+    opacity: 0.9;
+    padding: 30px;
+    padding-top: 45px;
+    transform: translateX(768px);
+    transition: transform 0.5s ease-in-out;
+
+    ul {
+      flex-direction: column;
+      align-items: start;
+      gap: 0.5em;
+    }
+
+    button {
+      display: block;
+      position: absolute;
+      inset-block-start: 15px;
+      inset-inline-end: 30px;
+    }
+
+    &--opened {
+      transform: translateX(0);
+      transition: transform 0.5s ease-in-out;
+    }
+  }
+
+  @include sm-down {
+    width: 100%;
+  }
 }
 
 .right {
@@ -28,4 +91,13 @@
   flex-direction: row;
   align-items: center;
   gap: 2em;
+
+  .menu_btn {
+    display: none;
+    cursor: pointer;
+
+    @include md-down {
+      display: inline;
+    }
+  }
 }
