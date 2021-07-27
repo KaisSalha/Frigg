@@ -34,7 +34,7 @@ model action_events {
 model article_assets {
   id               BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
   article_id       BigInt @db.UnsignedBigInt
-  asset_type_id    Int
+  asset_type_id    BigInt @db.UnsignedBigInt
   cdn_url          String    @db.VarChar(255)
   attrib_copyright String?   @db.VarChar(255)
   created_at       DateTime? @db.Timestamp(0)
@@ -42,6 +42,7 @@ model article_assets {
 
 
   article articles @relation(fields: [article_id], references: [id])
+  asset_type asset_types @relation(fields: [asset_type_id], references: [id])
 
   @@index([article_id, asset_type_id], name: "article_assets_article_id_asset_type_id_index")
 }
@@ -75,6 +76,9 @@ model asset_types {
   slug   String @unique @db.VarChar(255)
   height Int
   width  Int
+
+
+  assets article_assets[]
 }
 
 model authors {

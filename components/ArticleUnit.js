@@ -15,7 +15,8 @@ const ArticleUnit = ({ article }) => {
             layout="responsive"
             className="h-48 w-full object-cover"
             src={`${process.env.NEXT_PUBLIC_MEDIA_ENDPOINT}/${
-              article.assets.find(asset => asset.asset_type_id === 1).cdn_url
+              article.assets.find(asset => asset.asset_type.slug === "hero")
+                .cdn_url
             }`}
             alt=""
           />
