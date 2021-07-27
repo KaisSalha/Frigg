@@ -1,5 +1,6 @@
 import Head from "next/head";
 import ArticlesList from "components/ArticlesList";
+import styles from "styles/layout/main.module.scss";
 
 import getMain from "getters/main";
 
@@ -16,11 +17,9 @@ const Home = ({ initialArticles }) => {
         <title>Home</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="container">
-        <main>
-          <ArticlesList articles={articles} />
-        </main>
-      </div>
+      <main className={styles.container}>
+        <ArticlesList articles={articles} />
+      </main>
     </>
   );
 };

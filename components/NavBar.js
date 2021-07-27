@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import styles from "styles/components/Header.module.scss";
+import styles from "styles/components/Navbar.module.scss";
 import LocaleDropdown from "components/LocaleDropdown";
 
 function classNames(...classes) {
@@ -12,7 +12,14 @@ export default function Header({ categories }) {
   const router = useRouter();
   const [opened, setOpened] = useState(false);
 
-  const toggleMenu = () => setOpened(!opened);
+  useEffect(() => {
+    document.body.style.position = opened ? "fixed" : "relative";
+  }, [opened]);
+
+  const toggleMenu = () => {
+    setOpened(!opened);
+  };
+
   const linkClick = (e, href) => {
     e.preventDefault();
     setOpened(false);
@@ -20,7 +27,7 @@ export default function Header({ categories }) {
   };
 
   return (
-    <header className={styles.nav_container}>
+    <header className={styles.container}>
       <nav className={styles.nav}>
         <section className={styles.left}>
           <Link href="/">

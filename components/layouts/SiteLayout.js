@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import Head from "next/head";
-import Header from "../../components/Header";
+import NavBar from "../NavBar";
 import Footer from "../../components/Footer";
 import { useCategories } from "../../hooks/useCategory";
 
@@ -22,7 +22,7 @@ export const getLayout = page => {
         />
       </Head>
       <SiteLayout>
-        <Header categories={categories} locales={locales} />
+        <NavBar categories={categories} locales={locales} />
         {page}
         <Footer categories={categories} />
       </SiteLayout>
