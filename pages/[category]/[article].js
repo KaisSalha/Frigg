@@ -30,7 +30,8 @@ const ArticlePage = ({ initialArticle }) => {
               height={5}
               layout="responsive"
               src={`${process.env.NEXT_PUBLIC_MEDIA_ENDPOINT}/${
-                article.assets.find(asset => asset.asset_type_id === 1).cdn_url
+                article.assets.find(asset => asset.asset_type.slug === "hero")
+                  .cdn_url
               }`}
             />
             <p>{article.lead}</p>

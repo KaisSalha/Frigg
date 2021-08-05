@@ -1,0 +1,79 @@
+@import "styles/mixins/layout.scss";
+@import "styles/mixins/breakpoints.scss";
+@import "styles/mixins/rounded.scss";
+
+.container {
+  margin-top: 2em;
+
+  .title {
+    font-size: 24px;
+    line-height: 24px;
+    font-weight: 700;
+  }
+
+  .scroll {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    width: 100vw;
+    padding-inline-end: 0.3em;
+    margin-inline-start: -1.3em;
+
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .item {
+      @include rounded;
+      position: relative;
+      flex-grow: 1;
+      margin: 20px 7px;
+      min-width: 280px;
+      height: 400px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      .content {
+        @include rounded;
+        position: absolute;
+        color: white;
+        inset: 0px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 20px;
+        background: linear-gradient(
+          0deg,
+          rgba(0, 0, 0, 0.8) 0%,
+          rgba(0, 0, 0, 0) 70%
+        );
+
+        h2 {
+          font-weight: 800;
+          font-size: 1.5em;
+          line-height: 1.3;
+          margin-top: 7.5px;
+          margin-bottom: 15px;
+        }
+
+        footer {
+          p {
+            display: flex;
+            flex-direction: row;
+
+            time {
+              margin-inline-start: 1em;
+              opacity: 0.8;
+              color: rgb(247, 247, 247);
+            }
+          }
+        }
+      }
+    }
+  }
+}

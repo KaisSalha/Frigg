@@ -1,5 +1,6 @@
 import Head from "next/head";
 import ArticlesList from "components/ArticlesList";
+import ScrollList from "components/ScrollList";
 import styles from "styles/layout/main.module.scss";
 
 import getMain from "getters/main";
@@ -18,7 +19,8 @@ const Home = ({ initialArticles }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.container}>
-        <ArticlesList articles={articles} />
+        <ScrollList articles={articles} title="Latest Articles" />
+        {/* <ArticlesList articles={articles} /> */}
       </main>
     </>
   );

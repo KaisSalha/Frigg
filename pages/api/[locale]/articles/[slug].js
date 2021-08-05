@@ -9,7 +9,11 @@ export async function getArticle(locale_ref, slug) {
     where: { locale_id: parseInt(locale.id), slug },
     include: {
       category: true,
-      assets: true,
+      assets: {
+        include: {
+          asset_type: true
+        }
+      },
       author: true
     }
   });
