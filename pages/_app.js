@@ -3,6 +3,7 @@ import Router from "next/router";
 import NProgress from "nprogress"; //nprogress module
 import "nprogress/nprogress.css"; //styles of nprogress
 import "styles/components/nprogress.scss";
+import { appWithTranslation } from "next-i18next";
 
 //Binding events.
 Router.events.on("routeChangeStart", () => NProgress.start());
@@ -15,4 +16,4 @@ function MyApp({ Component, pageProps }) {
   return getLayout(<Component {...pageProps}></Component>);
 }
 
-export default MyApp;
+export default appWithTranslation(MyApp);

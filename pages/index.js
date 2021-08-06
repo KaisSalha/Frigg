@@ -1,5 +1,4 @@
 import Head from "next/head";
-import ArticlesList from "components/ArticlesList";
 import ScrollList from "components/ScrollList";
 import styles from "styles/layout/main.module.scss";
 
@@ -9,8 +8,12 @@ import { useArticles } from "hooks/useArticle";
 
 import { getLayout } from "components/layouts/SiteLayout";
 
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+
 const Home = ({ initialArticles }) => {
   const { articles } = useArticles(initialArticles);
+  const { t } = useTranslation("common");
 
   return (
     <>
@@ -19,8 +22,7 @@ const Home = ({ initialArticles }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.container}>
-        <ScrollList articles={articles} title="Latest Articles" />
-        {/* <ArticlesList articles={articles} /> */}
+        <ScrollList articles={articles} title={t("latest-articles")} />
       </main>
     </>
   );
@@ -33,5 +35,10 @@ export default Home;
 export async function getStaticProps({ locale }) {
   const initialProps = await getMain(locale);
 
-  return { props: { ...initialProps } };
+  return {
+    props: {
+      ...initialProps,
+      ...(await serverSideTranslations(locale, ["common"]))
+    }
+  };
 }
