@@ -49,6 +49,15 @@
       background-position: center;
       background-repeat: no-repeat;
 
+      @include md {
+        transform: scale(0.98);
+        transition: all 0.3s ease 0s;
+
+        &:hover {
+          transform: scale(1);
+        }
+      }
+
       .content {
         @include rounded;
         position: absolute;
