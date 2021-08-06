@@ -9,6 +9,9 @@
     font-size: 24px;
     line-height: 24px;
     font-weight: 700;
+    @include md {
+      padding-inline-start: 1em;
+    }
   }
 
   .scroll {
@@ -27,13 +30,21 @@
       display: none;
     }
 
+    @include md {
+      flex-wrap: wrap;
+      overflow-x: none;
+      width: 100%;
+      padding-inline-end: 0;
+      margin-inline-start: 0;
+    }
+
     .item {
       @include rounded;
       position: relative;
       flex-grow: 1;
       margin: 20px 7px;
       min-width: 280px;
-      height: 400px;
+      height: 375px;
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;

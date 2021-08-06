@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styles from "styles/components/Scroll.module.scss";
+import useLocalizedDate from "hooks/useLocalizedDate";
 
 const ScrollUnit = ({ article }) => {
   return (
@@ -22,12 +23,7 @@ const ScrollUnit = ({ article }) => {
             <p>
               <span>{article.author.name}</span>
               <time dateTime={article.updated_at}>
-                {new Date(article.updated_at)
-                  .toISOString()
-                  .slice(0, 10)
-                  .split("-")
-                  .reverse()
-                  .join("/")}
+                {useLocalizedDate(article.updated_at)}
               </time>
             </p>
           </footer>
