@@ -8,7 +8,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-const LocaleDropdown = () => {
+const LocaleDropdown = ({ dark }) => {
   const router = useRouter();
   const { locale: active, locales } = router;
 
@@ -17,8 +17,14 @@ const LocaleDropdown = () => {
       {({ open }) => (
         <>
           <>
-            <Menu.Button className={styles.button}>
-              {active}
+            <Menu.Button
+              className={classNames(
+                styles.button,
+                dark ? styles["button--dark"] : ""
+              )}
+            >
+              {active == "ar" ? "عر" : active}
+
               <ChevronDownIcon className={styles.icon} aria-hidden="true" />
             </Menu.Button>
           </>
@@ -32,7 +38,13 @@ const LocaleDropdown = () => {
             leaveFrom="transform opacity-100 scale-100"
             leaveTo="transform opacity-0 scale-95"
           >
-            <Menu.Items static className={styles.dropdown}>
+            <Menu.Items
+              static
+              className={classNames(
+                styles.dropdown,
+                dark ? styles["dropdown--dark"] : ""
+              )}
+            >
               {locales.map(locale => (
                 <Menu.Item key={locale}>
                   {({ active }) => (
@@ -43,7 +55,7 @@ const LocaleDropdown = () => {
                           styles.item
                         )}
                       >
-                        {locale}
+                        {locale == "ar" ? "عر" : locale}
                       </div>
                     </a>
                   )}

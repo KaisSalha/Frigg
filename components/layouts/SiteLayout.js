@@ -9,7 +9,7 @@ const SiteLayout = ({ children }) => <>{children}</>;
 export const getLayout = page => {
   const { locales } = useRouter();
 
-  const { initialCategories, initialLocales } = page.props;
+  const { initialCategories } = page.props;
 
   const { categories } = useCategories(initialCategories);
 
@@ -22,7 +22,13 @@ export const getLayout = page => {
         />
       </Head>
       <SiteLayout>
-        <NavBar categories={categories} locales={locales} />
+        <NavBar
+          categories={categories}
+          locales={locales}
+          floating={true}
+          shadow={true}
+          // dark={true}
+        />
         {page}
         <Footer categories={categories} />
       </SiteLayout>

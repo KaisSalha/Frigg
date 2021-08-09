@@ -8,7 +8,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Header({ categories }) {
+export default function Header({ categories, floating, dark, shadow }) {
   const router = useRouter();
   const [opened, setOpened] = useState(false);
 
@@ -27,7 +27,15 @@ export default function Header({ categories }) {
   };
 
   return (
-    <header className={styles.container}>
+    <header
+      className={classNames(
+        styles.container,
+        floating ? styles["container--floating"] : "",
+        shadow ? styles["container--shadow"] : "",
+        opened ? styles["container--opened"] : "",
+        dark ? styles["container--dark"] : ""
+      )}
+    >
       <nav className={styles.nav}>
         <section className={styles.left}>
           <Link href="/">
@@ -83,7 +91,7 @@ export default function Header({ categories }) {
               d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
             />
           </svg>
-          <LocaleDropdown />
+          <LocaleDropdown dark={dark} />
         </section>
       </nav>
     </header>
