@@ -30,7 +30,12 @@ const Home = ({ initialArticles }) => {
         <title>Home</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Hero image={hero} />
+      <Hero
+        image={hero}
+        title="Vadoo"
+        description="Guiding you through your Canadian journey"
+        dark={true}
+      />
       <main className={styles.main}>
         <div className={styles.container}>
           <ScrollList articles={articles} title={t("latest-articles")} />

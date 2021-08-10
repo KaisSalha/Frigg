@@ -1,5 +1,7 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
+import styles from "styles/layout/main.module.scss";
+import Hero from "components/Hero";
 
 import { getCategories } from "pages/api/[locale]/categories/index";
 import { getCategory } from "pages/api/[locale]/categories/[slug]";
@@ -19,24 +21,18 @@ const CategoryPage = ({ initialCategory }) => {
         <title>{category.name}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div
-        className="relative flex flex-wrap content-center bg-center bg-cover h-auto w-screen min-h-3/4"
-        style={{
-          backgroundImage: `url("${process.env.NEXT_PUBLIC_MEDIA_ENDPOINT}/${category.banner_img}")`
-        }}
-      >
-        <main>
-          <div className="z-20 relative align-middle sm:px-24 md:px-36 lg:px-96 overflow-hidden">
-            <div className="text-white text-center mx-auto">
-              <h1 className="text-5xl	mt-6 prose-2xl mx-auto">
-                {category.name}
-              </h1>
-              <p className="mt-6 prose-2xl mx-auto">{category.description}</p>
-            </div>
-          </div>
-        </main>
-        <div className="z-10 absolute inset-0 bg-black opacity-60" />
-      </div>
+      <Hero
+        image={`url("${process.env.NEXT_PUBLIC_MEDIA_ENDPOINT}/${category.banner_img}")`}
+        title={category.name}
+        description={category.description}
+        position="center"
+        shade={true}
+      />
+      <main className={styles.main}>
+        <div className={styles.container}>
+          {/* <ScrollList articles={articles} title={t("latest-articles")} /> */}
+        </div>
+      </main>
     </>
   );
 };
