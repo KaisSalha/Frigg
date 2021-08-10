@@ -1,17 +1,28 @@
 import Head from "next/head";
-import { useRouter } from "next/router";
+import ScrollList from "components/ScrollList";
 import styles from "styles/layout/main.module.scss";
 import Hero from "components/Hero";
 
 import { getCategories } from "pages/api/[locale]/categories/index";
+import { getArticles } from "pages/api/[locale]/articles/index";
 import { getCategory } from "pages/api/[locale]/categories/[slug]";
 
 import useCategory from "hooks/useCategory";
+
+import { useRouter } from "next/router";
+import { useArticles } from "hooks/useArticle";
+
 import { getLayout } from "components/layouts/SiteLayout";
 
-const CategoryPage = ({ initialCategory }) => {
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+
+const CategoryPage = ({ initialCategory, initialArticles }) => {
+  const { articles } = useArticles(initialArticles);
   const router = useRouter();
   const slug = router.query.category;
+
+  const { t } = useTranslation("common");
 
   const { category } = useCategory(slug, initialCategory);
 
@@ -30,7 +41,7 @@ const CategoryPage = ({ initialCategory }) => {
       />
       <main className={styles.main}>
         <div className={styles.container}>
-          {/* <ScrollList articles={articles} title={t("latest-articles")} /> */}
+          <ScrollList articles={articles} title={t("latest-articles")} />
         </div>
       </main>
     </>
@@ -46,10 +57,17 @@ export async function getStaticProps({ params, locale }) {
 
   const initialCategory = await getCategory(locale, slug);
 
+  const initialArticles = await getArticles(locale);
+
   const initialCategories = await getCategories(locale);
 
+  const initialProps = { initialCategory, initialCategories, initialArticles };
+
   return {
-    props: { initialCategory, initialCategories },
+    props: {
+      ...initialProps,
+      ...(await serverSideTranslations(locale, ["common"]))
+    },
     revalidate: 60
   };
 }
