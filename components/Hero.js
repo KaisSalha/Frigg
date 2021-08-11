@@ -8,8 +8,8 @@ export default function Hero({
   image,
   title,
   description,
-  position = "left",
-  dark = false,
+  position = "start",
+  color = "white",
   shade = false
 }) {
   return (
@@ -22,11 +22,12 @@ export default function Hero({
       <heading
         className={classNames(
           styles.container,
-          shade ? styles["container--shade"] : ""
+          shade ? styles["container--shade"] : "",
+          position == "center" ? styles["container--padded"] : ""
         )}
         style={{
           textAlign: position,
-          color: dark ? "black" : "white"
+          color: color
         }}
       >
         {title && <h1>{title}</h1>}

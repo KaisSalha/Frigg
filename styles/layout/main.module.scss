@@ -1,12 +1,8 @@
 @import "styles/mixins/layout.scss";
 
 .main {
-  border-radius: 10px;
   z-index: 30;
   position: relative;
-  border-style: solid;
-  border-width: 0;
-  transform: translateY(-10px);
   background: white;
   width: 100%;
   overflow: auto;

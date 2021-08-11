@@ -14,10 +14,11 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 const Home = ({ initialArticles }) => {
-  const { articles } = useArticles(initialArticles);
   const { t } = useTranslation("common");
   const router = useRouter();
   const { locale: active } = router;
+
+  const { articles } = useArticles(initialArticles, active);
 
   const hero =
     active == "ar"
@@ -32,9 +33,9 @@ const Home = ({ initialArticles }) => {
       </Head>
       <Hero
         image={hero}
-        title="Vadoo"
+        title={process.env.NEXT_PUBLIC_APP_NAME}
         description="Guiding you through your Canadian journey"
-        dark={true}
+        color="#85432A"
       />
       <main className={styles.main}>
         <div className={styles.container}>

@@ -18,13 +18,13 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 const CategoryPage = ({ initialCategory, initialArticles }) => {
-  const { articles } = useArticles(initialArticles);
   const router = useRouter();
   const slug = router.query.category;
 
   const { t } = useTranslation("common");
 
   const { category } = useCategory(slug, initialCategory);
+  const { articles } = useArticles(initialArticles, router.locale, category.id);
 
   return (
     <>
@@ -57,7 +57,7 @@ export async function getStaticProps({ params, locale }) {
 
   const initialCategory = await getCategory(locale, slug);
 
-  const initialArticles = await getArticles(locale);
+  const initialArticles = await getArticles(locale, initialCategory.id);
 
   const initialCategories = await getCategories(locale);
 

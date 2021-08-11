@@ -1,12 +1,16 @@
 import prisma from "helpers/prisma";
 
-export async function getArticles(locale_ref) {
+export async function getArticles(locale_ref, category_id = null) {
   const locale = await prisma.locales.findFirst({
     where: { ref: locale_ref }
   });
 
+  const where = { locale_id: parseInt(locale.id), status_id: 3 };
+
+  if (category_id) where.category_id = category_id;
+
   const articles = await prisma.articles.findMany({
-    where: { locale_id: parseInt(locale.id), status_id: 3 },
+    where,
     include: {
       category: true,
       assets: {
@@ -22,7 +26,7 @@ export async function getArticles(locale_ref) {
 }
 
 export default async (req, res) => {
-  const { locale_ref } = req.query;
+  const { locale_ref, category_id } = req.query;
 
   const articles = await getArticles(locale_ref);
 

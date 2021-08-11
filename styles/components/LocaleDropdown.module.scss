@@ -11,13 +11,13 @@
   width: 100%;
   font-weight: 500;
   padding: 0.5rem 1rem;
-  border: 1px solid white;
+  border: 2px solid white;
   border-radius: 0.375rem;
   cursor: pointer;
   text-transform: uppercase;
 
   &--dark {
-    border: 1px solid black;
+    border: 2px solid black;
   }
 
   .icon {

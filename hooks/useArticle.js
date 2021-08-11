@@ -12,8 +12,11 @@ export default function useArticle(slug, initialData) {
   };
 }
 
-export function useArticles(initialData) {
-  const endpoint = `${process.env.NEXT_PUBLIC_API_ENDPOINT}/en/articles/`;
+export function useArticles(initialData, locale_ref, category_id = null) {
+  const query =
+    `?locale_ref=${locale_ref}` + category_id ? `&category=${category_id}` : "";
+
+  const endpoint = `${process.env.NEXT_PUBLIC_API_ENDPOINT}/en/articles/${query}`;
   const { data } = useSWR(endpoint, fetcher, {
     initialData
   });
