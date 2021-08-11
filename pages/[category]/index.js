@@ -37,7 +37,7 @@ const CategoryPage = ({ initialCategory, initialArticles }) => {
         title={category.name}
         description={category.description}
         position="center"
-        shade={true}
+        shade={0.6}
       />
       <main className={styles.main}>
         <div className={styles.container}>

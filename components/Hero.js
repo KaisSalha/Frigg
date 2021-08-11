@@ -22,7 +22,6 @@ export default function Hero({
       <heading
         className={classNames(
           styles.container,
-          shade ? styles["container--shade"] : "",
           position == "center" ? styles["container--padded"] : ""
         )}
         style={{
@@ -33,7 +32,14 @@ export default function Hero({
         {title && <h1>{title}</h1>}
         {description && <p>{description}</p>}
       </heading>
-      {shade && <div className={styles.shade} />}
+      {shade && (
+        <div
+          className={styles.shade}
+          style={{
+            opacity: shade
+          }}
+        />
+      )}
     </section>
   );
 }

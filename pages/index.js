@@ -20,11 +20,6 @@ const Home = ({ initialArticles }) => {
 
   const { articles } = useArticles(initialArticles, active);
 
-  const hero =
-    active == "ar"
-      ? `url('${process.env.NEXT_PUBLIC_MEDIA_ENDPOINT}/home/hero10b.png')`
-      : `url('${process.env.NEXT_PUBLIC_MEDIA_ENDPOINT}/home/hero10a.png')`;
-
   return (
     <>
       <Head>
@@ -32,10 +27,11 @@ const Home = ({ initialArticles }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Hero
-        image={hero}
+        image={`url('${process.env.NEXT_PUBLIC_MEDIA_ENDPOINT}/home/hero11.jpg')`}
         title={process.env.NEXT_PUBLIC_APP_NAME}
         description="Guiding you through your Canadian journey"
-        color="#85432A"
+        color="white"
+        shade={0.2}
       />
       <main className={styles.main}>
         <div className={styles.container}>
