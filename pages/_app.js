@@ -12,8 +12,9 @@ Router.events.on("routeChangeError", () => NProgress.done());
 
 function MyApp({ Component, pageProps }) {
   const getLayout = Component.getLayout || (page => page);
+  const settings = Component.settings || { header: {} };
 
-  return getLayout(<Component {...pageProps}></Component>);
+  return getLayout(<Component {...pageProps}></Component>, settings);
 }
 
 export default appWithTranslation(MyApp);

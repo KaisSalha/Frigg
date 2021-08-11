@@ -6,7 +6,7 @@ import { useCategories } from "../../hooks/useCategory";
 
 const SiteLayout = ({ children }) => <>{children}</>;
 
-export const getLayout = page => {
+export const getLayout = (page, settings) => {
   const { locales } = useRouter();
 
   const { initialCategories } = page.props;
@@ -25,9 +25,9 @@ export const getLayout = page => {
         <NavBar
           categories={categories}
           locales={locales}
-          floating={true}
-          shadow={true}
-          // dark={true}
+          floating={settings.header.floating ?? true}
+          shadow={settings.header.shadow ?? true}
+          dark={settings.header.dark ?? false}
         />
         {page}
         <Footer categories={categories} />

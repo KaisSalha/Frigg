@@ -44,6 +44,12 @@ const ArticlePage = ({ initialArticle }) => {
 };
 
 ArticlePage.getLayout = getLayout;
+ArticlePage.settings = {
+  header: {
+    shadow: false,
+    dark: true
+  }
+};
 
 export default ArticlePage;
 
