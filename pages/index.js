@@ -28,8 +28,8 @@ const Home = ({ initialArticles }) => {
       </Head>
       <Hero
         image={`url('${process.env.NEXT_PUBLIC_MEDIA_ENDPOINT}/home/hero11.jpg')`}
-        title={process.env.NEXT_PUBLIC_APP_NAME}
-        description="Guiding you through your Canadian journey"
+        title={t("name")}
+        description={t("description")}
         color="white"
         shade={0.2}
       />
