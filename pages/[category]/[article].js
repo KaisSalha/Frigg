@@ -9,6 +9,8 @@ import { getCategories } from "pages/api/[locale]/categories/index";
 import useArticle from "hooks/useArticle";
 import { getLayout } from "components/layouts/SiteLayout";
 
+import styles from "styles/pages/article.module.scss";
+
 const ArticlePage = ({ initialArticle }) => {
   const router = useRouter();
   const slug = router.query.article;
@@ -22,22 +24,25 @@ const ArticlePage = ({ initialArticle }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <div className="relative py-16 bg-white overflow-hidden">
-          <div className="mt-6 prose prose-indigo prose-xl text-gray-500 mx-4 md:mx-auto">
-            <h1 className="text-center">{article.title}</h1>
-            <Image
-              width={10}
-              height={5}
-              layout="responsive"
-              src={`${process.env.NEXT_PUBLIC_MEDIA_ENDPOINT}/${
-                article.assets.find(asset => asset.asset_type.slug === "hero")
-                  .cdn_url
-              }`}
-            />
+        <article className={styles.main}>
+          <header>
+            <div>{article.category.name}</div>
+            <h1>{article.title}</h1>
+          </header>
+          <Image
+            width={10}
+            height={5}
+            layout="responsive"
+            src={`${process.env.NEXT_PUBLIC_MEDIA_ENDPOINT}/${
+              article.assets.find(asset => asset.asset_type.slug === "hero")
+                .cdn_url
+            }`}
+          />
+          <section className={styles.article}>
             <p>{article.lead}</p>
             <ReactMarkdown children={article.body} />
-          </div>
-        </div>
+          </section>
+        </article>
       </main>
     </>
   );
@@ -46,6 +51,7 @@ const ArticlePage = ({ initialArticle }) => {
 ArticlePage.getLayout = getLayout;
 ArticlePage.settings = {
   header: {
+    floating: false,
     shadow: false,
     dark: true
   }

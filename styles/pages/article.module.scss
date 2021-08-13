@@ -1,0 +1,40 @@
+@import "styles/mixins/layout.scss";
+@import "styles/mixins/breakpoints.scss";
+@import "styles/mixins/selectors.scss";
+
+.main {
+  margin-top: 2em;
+
+  header {
+    @include container;
+
+    div {
+      font-size: 14px;
+      color: rgb(106, 106, 106);
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: bold;
+      line-height: 39.2px;
+      margin-bottom: 20px;
+    }
+  }
+
+  .article {
+    @include container;
+
+    h2 {
+      font-size: 26px;
+      margin-top: 15px;
+      line-height: 1.4;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 26px;
+      margin-bottom: 20px;
+    }
+  }
+}
