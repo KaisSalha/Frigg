@@ -3,27 +3,36 @@
 @import "styles/mixins/selectors.scss";
 
 .main {
+  @include container;
   margin-top: 2em;
 
   header {
-    @include container;
-
     div {
       font-size: 14px;
       color: rgb(106, 106, 106);
+      margin-bottom: 0.75em;
     }
 
     h1 {
       font-size: 28px;
       font-weight: bold;
-      line-height: 39.2px;
-      margin-bottom: 20px;
+      line-height: 1.5em;
+      margin-bottom: 0.75em;
+    }
+  }
+
+  .byline {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5em 0;
+    gap: 1em;
+
+    address {
+      display: inline-block;
     }
   }
 
   .article {
-    @include container;
-
     h2 {
       font-size: 26px;
       margin-top: 15px;

@@ -11,7 +11,13 @@ import { getLayout } from "components/layouts/SiteLayout";
 
 import styles from "styles/pages/article.module.scss";
 
+import useLocalizedDate from "hooks/useLocalizedDate";
+
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+
 const ArticlePage = ({ initialArticle }) => {
+  const { t } = useTranslation("common");
   const router = useRouter();
   const slug = router.query.article;
 
@@ -38,6 +44,17 @@ const ArticlePage = ({ initialArticle }) => {
                 .cdn_url
             }`}
           />
+          <section className={styles.byline}>
+            <address>
+              {`${t("by")} `}
+              <a href="#" rel="author">
+                {article.author.name}
+              </a>
+            </address>
+            <time pubdate="pubdate" dateTime={article.created_at}>
+              {useLocalizedDate(article.created_at, false)}
+            </time>
+          </section>
           <section className={styles.article}>
             <p>{article.lead}</p>
             <ReactMarkdown children={article.body} />
@@ -66,8 +83,13 @@ export async function getStaticProps({ params, locale }) {
 
   const initialCategories = await getCategories(locale);
 
+  const initialProps = { initialArticle, initialCategories };
+
   return {
-    props: { initialArticle, initialCategories },
+    props: {
+      ...initialProps,
+      ...(await serverSideTranslations(locale, ["common"]))
+    },
     revalidate: 60
   };
 }

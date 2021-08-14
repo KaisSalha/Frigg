@@ -11,13 +11,13 @@
   width: 100%;
   font-weight: 500;
   padding: 0.5rem 1rem;
-  border: 2px solid white;
+  border: 1px solid white;
   border-radius: 0.375rem;
   cursor: pointer;
   text-transform: uppercase;
 
   &--dark {
-    border: 2px solid black;
+    border: 1px solid black;
   }
 
   .icon {
@@ -38,11 +38,7 @@
   background-color: white;
   text-transform: uppercase;
   color: rgba(17, 24, 39, 1);
-
-  &--dark {
-    background-color: rgba(17, 24, 39, 1);
-    color: white;
-  }
+  border: 1px solid grey;
 
   .item {
     display: block;

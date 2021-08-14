@@ -42,7 +42,7 @@ const LocaleDropdown = ({ dark }) => {
               static
               className={classNames(
                 styles.dropdown,
-                dark ? styles["dropdown--dark"] : ""
+                dark ? "" : styles["dropdown--dark"]
               )}
             >
               {locales.map(locale => (
