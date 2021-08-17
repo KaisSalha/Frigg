@@ -56,4 +56,3 @@ export async function getStaticProps({ locale }) {
     }
   };
 }
-//test
