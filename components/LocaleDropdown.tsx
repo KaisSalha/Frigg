@@ -4,11 +4,15 @@ import { ChevronDownIcon } from "@heroicons/react/solid";
 import { useRouter } from "next/router";
 import styles from "styles/components/LocaleDropdown.module.scss";
 
-function classNames(...classes) {
+interface Props {
+  dark: boolean;
+}
+
+function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(" ");
 }
 
-const LocaleDropdown = ({ dark }) => {
+const LocaleDropdown = ({ dark }: Props) => {
   const router = useRouter();
   const { locale: active, locales } = router;
 
@@ -45,7 +49,7 @@ const LocaleDropdown = ({ dark }) => {
                 dark ? "" : styles["dropdown--dark"]
               )}
             >
-              {locales.map(locale => (
+              {locales?.map(locale => (
                 <Menu.Item key={locale}>
                   {() => (
                     <a href={locale == "en" ? "/" : locale}>

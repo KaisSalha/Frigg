@@ -1,6 +1,15 @@
 import styles from "styles/components/Hero.module.scss";
 
-function classNames(...classes) {
+interface Props {
+  image: string;
+  title: string;
+  description: string;
+  position: string;
+  color: string;
+  shade: boolean | number;
+}
+
+function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(" ");
 }
 
@@ -11,7 +20,7 @@ export default function Hero({
   position = "start",
   color = "white",
   shade = false
-}) {
+}: Props) {
   return (
     <section
       className={styles.main}
@@ -25,6 +34,7 @@ export default function Hero({
           position == "center" ? styles["container--padded"] : ""
         )}
         style={{
+          //@ts-ignore
           textAlign: position,
           color: color
         }}
@@ -36,6 +46,7 @@ export default function Hero({
         <div
           className={styles.shade}
           style={{
+            //@ts-ignore
             opacity: shade
           }}
         />

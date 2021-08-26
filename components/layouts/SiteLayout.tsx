@@ -1,14 +1,24 @@
 import { useRouter } from "next/router";
 import Head from "next/head";
-import NavBar from "../NavBar";
-import Footer from "../../components/Footer";
-import { useCategories } from "../../hooks/useCategory";
+import NavBar from "components/NavBar";
+import Footer from "components/Footer";
+import { useCategories } from "hooks/useCategory";
 
-const SiteLayout = ({ children }) => <>{children}</>;
+interface Settings {
+  header?: {
+    floating?: boolean;
+    shadow?: boolean;
+    dark?: boolean;
+  };
+}
 
-export const getLayout = (page, settings) => {
-  const { locales } = useRouter();
+interface Props {
+  children: React.ReactNode;
+}
 
+const SiteLayout = ({ children }: Props) => <>{children}</>;
+
+export const getLayout = (page: any, settings: Settings) => {
   const { initialCategories } = page.props;
 
   const { categories } = useCategories(initialCategories);
@@ -24,10 +34,9 @@ export const getLayout = (page, settings) => {
       <SiteLayout>
         <NavBar
           categories={categories}
-          locales={locales}
-          floating={settings.header.floating ?? true}
-          shadow={settings.header.shadow ?? true}
-          dark={settings.header.dark ?? false}
+          floating={settings?.header?.floating ?? true}
+          shadow={settings?.header?.shadow ?? true}
+          dark={settings?.header?.dark ?? false}
         />
         {page}
         <Footer categories={categories} />

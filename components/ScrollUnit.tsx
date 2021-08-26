@@ -2,7 +2,13 @@ import Link from "next/link";
 import styles from "styles/components/Scroll.module.scss";
 import useLocalizedDate from "hooks/useLocalizedDate";
 
-const ScrollUnit = ({ article }) => {
+import { Article } from "types";
+
+interface Props {
+  article: Article;
+}
+
+export default function ScrollUnit({ article }: Props) {
   return (
     <Link href={`${article.category.slug}/${article.slug}`}>
       <section
@@ -10,7 +16,7 @@ const ScrollUnit = ({ article }) => {
         style={{
           backgroundImage: `url('${process.env.NEXT_PUBLIC_MEDIA_ENDPOINT}/${
             article.assets.find(asset => asset.asset_type.slug === "hero")
-              .cdn_url
+              ?.cdn_url
           }')`
         }}
       >
@@ -31,6 +37,4 @@ const ScrollUnit = ({ article }) => {
       </section>
     </Link>
   );
-};
-
-export default ScrollUnit;
+}

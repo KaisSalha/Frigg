@@ -4,11 +4,20 @@ import Link from "next/link";
 import styles from "styles/components/Navbar.module.scss";
 import LocaleDropdown from "components/LocaleDropdown";
 
-function classNames(...classes) {
+import { Category } from "types";
+
+interface Props {
+  categories: Category[];
+  floating: boolean;
+  dark: boolean;
+  shadow: boolean;
+}
+
+function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Header({ categories, floating, dark, shadow }) {
+export default function Header({ categories, floating, dark, shadow }: Props) {
   const router = useRouter();
   const [opened, setOpened] = useState(false);
 
@@ -20,7 +29,10 @@ export default function Header({ categories, floating, dark, shadow }) {
     setOpened(!opened);
   };
 
-  const linkClick = (e, href) => {
+  const linkClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: URL | string
+  ) => {
     e.preventDefault();
     setOpened(false);
     router.push(href);
