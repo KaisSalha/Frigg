@@ -1,3 +1,5 @@
+import { GetStaticProps } from "next";
+
 import Head from "next/head";
 import ScrollList from "components/ScrollList";
 import Hero from "components/Hero";
@@ -13,12 +15,18 @@ import { getLayout } from "components/layouts/SiteLayout";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-const Home = ({ initialArticles }) => {
+import { Article } from "types";
+
+interface Props {
+  initialArticles: Article[];
+}
+
+const Home = ({ initialArticles }: Props) => {
   const { t } = useTranslation("common");
   const router = useRouter();
   const { locale: active } = router;
 
-  const { articles } = useArticles(initialArticles, active);
+  const { articles } = useArticles(initialArticles, active ?? "en");
 
   return (
     <>
@@ -35,7 +43,9 @@ const Home = ({ initialArticles }) => {
       />
       <main className={styles.main}>
         <div className={styles.container}>
-          <ScrollList articles={articles} title={t("latest-articles")} />
+          {articles && (
+            <ScrollList articles={articles} title={t("latest-articles")} />
+          )}
         </div>
       </main>
     </>
@@ -46,13 +56,16 @@ Home.getLayout = getLayout;
 
 export default Home;
 
-export async function getStaticProps({ locale }) {
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  locale = locale ?? "en";
+
   const initialProps = await getMain(locale);
 
   return {
     props: {
       ...initialProps,
       ...(await serverSideTranslations(locale, ["common"]))
-    }
+    },
+    revalidate: 60
   };
-}
+};

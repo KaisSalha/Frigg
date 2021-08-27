@@ -4,9 +4,9 @@ interface Props {
   image: string;
   title: string;
   description: string;
-  position: string;
-  color: string;
-  shade: boolean | number;
+  position?: string;
+  color?: string;
+  shade?: false | number;
 }
 
 function classNames(...classes: string[]): string {

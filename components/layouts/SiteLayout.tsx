@@ -4,6 +4,8 @@ import NavBar from "components/NavBar";
 import Footer from "components/Footer";
 import { useCategories } from "hooks/useCategory";
 
+import { Category } from "types";
+
 interface Settings {
   header?: {
     floating?: boolean;
@@ -21,7 +23,8 @@ const SiteLayout = ({ children }: Props) => <>{children}</>;
 export const getLayout = (page: any, settings: Settings) => {
   const { initialCategories } = page.props;
 
-  const { categories } = useCategories(initialCategories);
+  const { categories }: { categories: Category[] | undefined } =
+    useCategories(initialCategories);
 
   return (
     <>

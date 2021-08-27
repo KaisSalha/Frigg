@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
-export default function useLocalizedDate(idate, numeric = true) {
-  const [date, setDate] = useState(null);
+export default function useLocalizedDate(
+  idate: Date,
+  numeric: boolean = true
+): string {
+  const [date, setDate] = useState<string>("");
   const { locale } = useRouter();
   const l = locale == "ar" ? "ar-EG" : "en-US";
 

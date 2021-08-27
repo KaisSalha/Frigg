@@ -19,7 +19,7 @@ function classNames(...classes: string[]): string {
 
 export default function Header({ categories, floating, dark, shadow }: Props) {
   const router = useRouter();
-  const [opened, setOpened] = useState(false);
+  const [opened, setOpened] = useState<boolean>(false);
 
   useEffect(() => {
     document.body.style.position = opened ? "fixed" : "relative";
