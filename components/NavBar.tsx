@@ -7,7 +7,7 @@ import LocaleDropdown from "components/LocaleDropdown";
 import { Category } from "types";
 
 interface Props {
-  categories: Category[];
+  categories: Category[] | undefined;
   floating: boolean;
   dark: boolean;
   shadow: boolean;
@@ -66,11 +66,12 @@ export default function Header({ categories, floating, dark, shadow }: Props) {
         >
           <button onClick={toggleMenu}>x</button>
           <ul>
-            {categories.map(c => (
-              <li key={c.id}>
-                <a onClick={e => linkClick(e, `/${c.slug}`)}>{c.name}</a>
-              </li>
-            ))}
+            {categories &&
+              categories.map(c => (
+                <li key={c.id}>
+                  <a onClick={e => linkClick(e, `/${c.slug}`)}>{c.name}</a>
+                </li>
+              ))}
           </ul>
         </section>
         <section className={styles.right}>
