@@ -1,7 +1,10 @@
 const path = require("path");
 const { i18n } = require("./next-i18next.config");
 
-module.exports = {
+/**
+ * @type {import('next').NextConfig}
+ **/
+const nextConfig = {
   i18n,
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")]
@@ -14,3 +17,5 @@ module.exports = {
     defaultLocale: "en"
   }
 };
+
+module.exports = nextConfig;

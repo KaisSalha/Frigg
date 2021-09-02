@@ -1,3 +1,6 @@
+import { GetStaticProps, GetStaticPaths } from "next";
+import DefaultErrorPage from "next/error";
+
 import Head from "next/head";
 import ReactMarkdown from "react-markdown";
 import { useRouter } from "next/router";
@@ -16,12 +19,20 @@ import useLocalizedDate from "hooks/useLocalizedDate";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-const ArticlePage = ({ initialArticle }) => {
+import { Article } from "types";
+
+interface Props {
+  initialArticle: Article;
+}
+
+const ArticlePage = ({ initialArticle }: Props) => {
   const { t } = useTranslation("common");
   const router = useRouter();
-  const slug = router.query.article;
+  const slug = router.query.article as string;
 
   const { article } = useArticle(slug, initialArticle);
+
+  if (!article) return <DefaultErrorPage statusCode={404} />;
 
   return (
     <>
@@ -41,7 +52,7 @@ const ArticlePage = ({ initialArticle }) => {
             layout="responsive"
             src={`${process.env.NEXT_PUBLIC_MEDIA_ENDPOINT}/${
               article.assets.find(asset => asset.asset_type.slug === "hero")
-                .cdn_url
+                ?.cdn_url
             }`}
           />
           <section className={styles.byline}>
@@ -76,8 +87,11 @@ ArticlePage.settings = {
 
 export default ArticlePage;
 
-export async function getStaticProps({ params, locale }) {
-  const slug = params.article;
+export const getStaticProps: GetStaticProps = async ({
+  params,
+  locale = "en"
+}) => {
+  const slug = params?.article;
 
   const initialArticle = await getArticle(locale, slug);
 
@@ -92,11 +106,11 @@ export async function getStaticProps({ params, locale }) {
     },
     revalidate: 60
   };
-}
+};
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   return {
     paths: [],
     fallback: "blocking"
   };
-}
+};

@@ -1,3 +1,6 @@
+import { GetStaticProps, GetStaticPaths } from "next";
+import DefaultErrorPage from "next/error";
+
 import Head from "next/head";
 import ScrollList from "components/ScrollList";
 import styles from "styles/layout/main.module.scss";
@@ -17,14 +20,25 @@ import { getLayout } from "components/layouts/SiteLayout";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-const CategoryPage = ({ initialCategory, initialArticles }) => {
+import { Article, Category } from "types";
+
+interface Props {
+  initialCategory: Category;
+  initialArticles: Article[];
+}
+
+const CategoryPage = ({ initialCategory, initialArticles }: Props) => {
   const router = useRouter();
-  const slug = router.query.category;
+  const slug = router.query.category as string;
+  const { locale = "en" } = router;
 
   const { t } = useTranslation("common");
 
   const { category } = useCategory(slug, initialCategory);
-  const { articles } = useArticles(initialArticles, router.locale, category.id);
+
+  if (!category) return <DefaultErrorPage statusCode={404} />;
+
+  const { articles } = useArticles(initialArticles, locale, category?.id);
 
   return (
     <>
@@ -41,7 +55,9 @@ const CategoryPage = ({ initialCategory, initialArticles }) => {
       />
       <main className={styles.main}>
         <div className={styles.container}>
-          <ScrollList articles={articles} title={t("latest-articles")} />
+          {articles && (
+            <ScrollList articles={articles} title={t("latest-articles")} />
+          )}
         </div>
       </main>
     </>
@@ -52,10 +68,19 @@ CategoryPage.getLayout = getLayout;
 
 export default CategoryPage;
 
-export async function getStaticProps({ params, locale }) {
-  const slug = params.category;
+export const getStaticProps: GetStaticProps = async ({
+  params,
+  locale = "en"
+}) => {
+  const slug = params?.category;
 
   const initialCategory = await getCategory(locale, slug);
+
+  if (!initialCategory)
+    return {
+      props: {},
+      revalidate: 60
+    };
 
   const initialArticles = await getArticles(locale, initialCategory.id);
 
@@ -70,19 +95,11 @@ export async function getStaticProps({ params, locale }) {
     },
     revalidate: 60
   };
-}
+};
 
-export async function getStaticPaths({ locale }) {
-  const initialCategories = await getCategories(locale);
-
-  const paths = initialCategories.map(category => ({
-    params: {
-      category: category.slug
-    }
-  }));
-
+export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths,
+    paths: [],
     fallback: "blocking"
   };
-}
+};
