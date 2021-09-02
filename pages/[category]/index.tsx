@@ -74,6 +74,7 @@ export const getStaticProps: GetStaticProps = async ({
 }) => {
   const slug = params?.category;
 
+  // @ts-ignore
   const initialCategory = await getCategory(locale, slug);
 
   if (!initialCategory)
@@ -82,7 +83,7 @@ export const getStaticProps: GetStaticProps = async ({
       revalidate: 60
     };
 
-  const initialArticles = await getArticles(locale, initialCategory.id);
+  const initialArticles = await getArticles(locale, Number(initialCategory.id));
 
   const initialCategories = await getCategories(locale);
 

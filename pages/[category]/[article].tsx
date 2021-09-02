@@ -93,6 +93,7 @@ export const getStaticProps: GetStaticProps = async ({
 }) => {
   const slug = params?.article;
 
+  // @ts-ignore
   const initialArticle = await getArticle(locale, slug);
 
   const initialCategories = await getCategories(locale);
