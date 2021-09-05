@@ -78,7 +78,9 @@ export default function Footer({ categories }) {
                       key={category.name}
                       className="text-base text-gray-300 hover:text-white"
                     >
-                      <Link href={`/${category.slug}`}>{category.name}</Link>
+                      <Link href={`/${category.slug}`} passHref>
+                        <a>{category.name}</a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -93,7 +95,9 @@ export default function Footer({ categories }) {
                       key={item.name}
                       className="text-base text-gray-300 hover:text-white"
                     >
-                      <Link href={item.href}>{item.name}</Link>
+                      <Link href={item.href} passHref>
+                        <a>{item.name}</a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -110,7 +114,9 @@ export default function Footer({ categories }) {
                       key={item.name}
                       className="text-base text-gray-300 hover:text-white"
                     >
-                      <Link href={item.href}>{item.name}</Link>
+                      <Link href={item.href} passHref>
+                        <a>{item.name}</a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -125,7 +131,9 @@ export default function Footer({ categories }) {
                       key={item.name}
                       className="text-base text-gray-300 hover:text-white"
                     >
-                      <Link href={item.href}>{item.name}</Link>
+                      <Link href={item.href} passHref>
+                        <a>{item.name}</a>
+                      </Link>
                     </li>
                   ))}
                 </ul>

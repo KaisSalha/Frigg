@@ -50,12 +50,14 @@ export default function Header({ categories, floating, dark, shadow }: Props) {
     >
       <nav className={styles.nav}>
         <section className={styles.left}>
-          <Link href="/">
-            <img
-              className={classNames(styles.logo, "h-8 w-auto sm:h-10")}
-              src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-              alt=""
-            />
+          <Link href="/" passHref>
+            <a>
+              <img
+                className={classNames(styles.logo, "h-8 w-auto sm:h-10")}
+                src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+                alt=""
+              />
+            </a>
           </Link>
         </section>
         <section
