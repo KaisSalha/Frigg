@@ -54,9 +54,11 @@ export default function Header({ categories, floating, dark, shadow }: Props) {
           <Link href="/" passHref>
             <a>
               <Image
-                className={classNames(styles.logo, "h-8 w-auto sm:h-10")}
+                className={styles.logo}
                 src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
                 alt=""
+                width="35"
+                height="35"
               />
             </a>
           </Link>

@@ -10,7 +10,7 @@ const nextConfig = {
     includePaths: [path.join(__dirname, "styles")]
   },
   images: {
-    domains: ["s3.ca-central-1.amazonaws.com"]
+    domains: ["s3.ca-central-1.amazonaws.com", "tailwindui.com"]
   },
   i18n: {
     locales: ["en", "ar"],
