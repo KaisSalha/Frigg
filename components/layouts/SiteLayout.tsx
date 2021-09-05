@@ -1,10 +1,6 @@
-import { useRouter } from "next/router";
 import Head from "next/head";
 import NavBar from "components/NavBar";
 import Footer from "components/Footer";
-import { useCategories } from "hooks/useCategory";
-
-import { Category } from "types";
 
 interface Settings {
   header?: {
@@ -21,10 +17,7 @@ interface Props {
 const SiteLayout = ({ children }: Props) => <>{children}</>;
 
 export const getLayout = (page: any, settings: Settings) => {
-  const { initialCategories } = page.props;
-
-  const { categories }: { categories: Category[] | undefined } =
-    useCategories(initialCategories);
+  const { initialCategories: categories } = page.props;
 
   return (
     <>

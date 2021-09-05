@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import { GetStaticProps, GetStaticPaths } from "next";
 import DefaultErrorPage from "next/error";
 
@@ -12,10 +11,9 @@ import { getCategories } from "pages/api/[locale]/categories/index";
 
 import useArticle from "hooks/useArticle";
 import { getLayout } from "components/layouts/SiteLayout";
+import LocalizedDate from "components/LocalizedDate";
 
 import styles from "styles/pages/article.module.scss";
-
-import useLocalizedDate from "hooks/useLocalizedDate";
 
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -72,9 +70,7 @@ const ArticlePage = ({ initialArticle }: Props) => {
                   <div className={styles.position}>{article.author.bio}</div>
                 </div>
               </address>
-              <time pubdate="pubdate" dateTime={article.created_at}>
-                {useLocalizedDate(article.created_at, false)}
-              </time>
+              {<LocalizedDate date={article.created_at} />}
             </section>
           </header>
           <Image

@@ -15,7 +15,7 @@ export const getCategory = async (locale_ref: string, slug: string) => {
   return category;
 };
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const getCategoryApi = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== "GET")
     return res.status(405).json({ message: "Method not allowed" });
 
@@ -33,3 +33,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   return res.json(category);
 };
+
+export default getCategoryApi;

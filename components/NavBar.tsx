@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import styles from "styles/components/Navbar.module.scss";
@@ -52,7 +53,7 @@ export default function Header({ categories, floating, dark, shadow }: Props) {
         <section className={styles.left}>
           <Link href="/" passHref>
             <a>
-              <img
+              <Image
                 className={classNames(styles.logo, "h-8 w-auto sm:h-10")}
                 src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
                 alt=""

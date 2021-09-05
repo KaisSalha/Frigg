@@ -24,7 +24,7 @@ export const getArticle = async (locale_ref: string, slug: string) => {
   return article;
 };
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const getArticleApi = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== "GET")
     return res.status(405).json({ message: "Method not allowed" });
 
@@ -42,3 +42,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   return res.json(article);
 };
+
+export default getArticleApi;

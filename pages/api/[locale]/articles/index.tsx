@@ -32,7 +32,7 @@ export const getArticles = async (
   return articles;
 };
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const getArticlesApi = async (req: NextApiRequest, res: NextApiResponse) => {
   let { locale_ref, category_id } = req.query;
 
   locale_ref = Array.isArray(locale_ref) ? locale_ref[0] : locale_ref;
@@ -47,3 +47,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   return res.json(articles);
 };
+
+export default getArticlesApi;

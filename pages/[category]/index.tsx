@@ -36,10 +36,9 @@ const CategoryPage = ({ initialCategory, initialArticles }: Props) => {
 
   const { category } = useCategory(slug, initialCategory);
 
-  if (!category) return <DefaultErrorPage statusCode={404} />;
-
   const { articles } = useArticles(initialArticles, locale, category?.id);
 
+  if (!category) return <DefaultErrorPage statusCode={404} />;
   return (
     <>
       <Head>
