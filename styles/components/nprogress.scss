@@ -1,5 +1,7 @@
+@import "styles/variables/colors.scss";
+
 #nprogress .bar {
-  background: rgb(99, 102, 241);
+  background: $primary;
 }
 
 #nprogress .spinner {
