@@ -24,6 +24,52 @@ interface Props {
   initialArticle: Article;
 }
 
+const MarkdownComponents: object = {
+  p: (paragraph: any) => {
+    const { node } = paragraph;
+
+    if (node.children[0].tagName === "img") {
+      const image = node.children[0];
+      const alt = image.properties.alt?.replace(/ *\{[^)]*\} */g, "");
+      const isPriority = image.properties.alt
+        ?.toLowerCase()
+        .includes("{priority}");
+      const metaWidth = image.properties.alt.match(/{([^}]+)x/);
+      const metaHeight = image.properties.alt.match(/x([^}]+)}/);
+      const width = metaWidth ? metaWidth[1] : 10;
+      const height = metaHeight ? metaHeight[1] : 5;
+
+      return (
+        <Image
+          src={image.properties.src}
+          width={width}
+          height={height}
+          className={styles.articleImg}
+          alt={alt}
+          priority={isPriority}
+          layout="responsive"
+        />
+      );
+    }
+    return <p>{paragraph.children}</p>;
+  },
+  img: (image: any) => {
+    const metaWidth = image.properties.alt.match(/{([^}]+)x/);
+    const metaHeight = image.properties.alt.match(/x([^}]+)}/);
+    const width = metaWidth ? metaWidth[1] : 10;
+    const height = metaHeight ? metaHeight[1] : 5;
+    return (
+      <Image
+        src={image.properties.src}
+        alt={image.properties.alt}
+        height={height}
+        width={width}
+        layout="responsive"
+      />
+    );
+  }
+};
+
 const ArticlePage = ({ initialArticle }: Props) => {
   const { t } = useTranslation("common");
   const router = useRouter();
@@ -87,7 +133,9 @@ const ArticlePage = ({ initialArticle }: Props) => {
           </div>
           <section className={styles.article}>
             <p>{article.lead}</p>
-            <ReactMarkdown>{article.body}</ReactMarkdown>
+            <ReactMarkdown components={MarkdownComponents}>
+              {article.body}
+            </ReactMarkdown>
           </section>
         </article>
       </main>
