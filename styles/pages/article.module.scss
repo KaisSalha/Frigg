@@ -6,11 +6,16 @@
   @include container;
   display: flex;
   flex-direction: row;
+  padding-block-start: 1em;
+  margin-block-end: 2em;
+
+  @include md {
+    padding-block-start: 2em;
+  }
 
   .content {
     max-width: 850px;
     font-family: Roboto, sans-serif;
-    margin-block-start: 1em;
 
     .hero {
       margin-block-end: 1.5em;
@@ -20,6 +25,11 @@
     }
 
     header {
+      @include md {
+        padding-inline-start: 4em;
+        padding-inline-end: 4em;
+      }
+
       > * {
         margin-block-end: 15px;
       }
@@ -42,6 +52,11 @@
         line-height: 42px;
         font-weight: 700;
         font-family: Inter, sans-serif;
+
+        @include md {
+          font-size: 48px;
+          line-height: 54px;
+        }
       }
 
       .byline {
@@ -83,6 +98,16 @@
     }
 
     .article {
+      @include md {
+        padding-inline-start: 4em;
+        padding-inline-end: 4em;
+
+        .articleImg {
+          margin-inline-start: -4em;
+          margin-inline-end: -4em;
+        }
+      }
+
       a {
         color: $primary;
         text-decoration: underline;
@@ -109,6 +134,10 @@
         font-size: 16px;
         line-height: 26px;
         color: #000;
+      }
+
+      > div {
+        margin-block-end: 10px;
       }
 
       ul {
