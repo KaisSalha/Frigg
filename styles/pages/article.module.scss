@@ -4,158 +4,169 @@
 
 .main {
   @include container;
-  max-width: 740px;
-  font-family: Roboto, sans-serif;
-  margin-block-start: 1em;
+  display: flex;
+  flex-direction: row;
 
-  .hero {
-    margin-block-end: 1.5em;
-    img {
-      border-radius: 0.75rem;
+  .content {
+    max-width: 850px;
+    font-family: Roboto, sans-serif;
+    margin-block-start: 1em;
+
+    .hero {
+      margin-block-end: 1.5em;
+      img {
+        border-radius: 0.75rem;
+      }
     }
-  }
 
-  header {
-    > * {
-      margin-block-end: 15px;
-    }
+    header {
+      > * {
+        margin-block-end: 15px;
+      }
 
-    .category {
-      display: flex;
-      flex-wrap: wrap;
+      .category {
+        display: flex;
+        flex-wrap: wrap;
 
-      a {
-        color: $primary;
+        a {
+          color: $primary;
+          font-weight: 700;
+          text-transform: uppercase;
+          font-size: 12px;
+          border-block-end: 0.15rem solid currentColor;
+        }
+      }
+
+      h1 {
+        font-size: 35px;
+        line-height: 42px;
         font-weight: 700;
-        text-transform: uppercase;
-        font-size: 12px;
-        border-block-end: 0.15rem solid currentColor;
-      }
-    }
-
-    h1 {
-      font-size: 35px;
-      line-height: 42px;
-      font-weight: 700;
-      font-family: Inter, sans-serif;
-    }
-
-    .byline {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-
-      svg {
-        margin-block-start: 10px;
+        font-family: Inter, sans-serif;
       }
 
-      address {
+      .byline {
         display: flex;
         flex-direction: row;
-        gap: 4px;
-        font-style: normal;
+        justify-content: space-between;
 
-        .author {
-          margin-inline-start: 5px;
-          a {
-            color: $primary;
+        svg {
+          margin-block-start: 10px;
+        }
+
+        address {
+          display: flex;
+          flex-direction: row;
+          gap: 4px;
+          font-style: normal;
+
+          .author {
+            margin-inline-start: 5px;
+            a {
+              color: $primary;
+            }
+          }
+
+          .position {
+            margin-block-end: 0;
+            font-size: 12px;
+            line-height: 1;
           }
         }
 
-        .position {
-          margin-block-end: 0;
+        time {
           font-size: 12px;
-          line-height: 1;
+          color: #505d68;
+          text-transform: uppercase;
+          text-align: start;
         }
       }
+    }
 
-      time {
-        font-size: 12px;
-        color: #505d68;
-        text-transform: uppercase;
-        text-align: start;
+    .article {
+      a {
+        color: $primary;
+        text-decoration: underline;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      strong {
+        font-weight: bold;
+      }
+
+      em {
+        font-style: italic;
+      }
+
+      h2 {
+        font-size: 28px;
+        font-weight: 700;
+        margin-block-start: 12px;
+      }
+
+      p {
+        margin-block-end: 10px;
+        font-size: 16px;
+        line-height: 26px;
+        color: #000;
+      }
+
+      ul {
+        list-style-type: none;
+        padding-inline-start: 25px;
+      }
+
+      ul li:before {
+        content: "";
+        inset-inline-end: 16px;
+        display: block;
+        width: 5px;
+        position: relative;
+        height: 5px;
+        background-color: $primary;
+        border-radius: 50%;
+        margin-block-end: 2px;
+        inset-block-start: 16px;
+      }
+
+      ol {
+        list-style: none;
+        counter-reset: item;
+        margin-block-start: 10px;
+        padding-block-start: 10px;
+      }
+
+      ol > li {
+        position: relative;
+        counter-increment: item;
+        margin-block-end: 15px;
+        padding-inline-start: 30px;
+      }
+
+      ol > li:before {
+        position: absolute;
+        content: counter(item);
+        border-radius: 50%;
+        border: 2px solid $primary;
+        color: $primary;
+        text-align: center;
+        width: 23px;
+        height: 23px;
+        display: inline-block;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 19px;
+        vertical-align: middle;
+        letter-spacing: -1px;
+        padding-inline-end: 2px;
+        margin-inline-start: -30px;
       }
     }
   }
 
-  .article {
-    a {
-      color: $primary;
-      text-decoration: underline;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    strong {
-      font-weight: bold;
-    }
-
-    em {
-      font-style: italic;
-    }
-
-    h2 {
-      font-size: 28px;
-      font-weight: 700;
-      margin-block-start: 12px;
-    }
-
-    p {
-      margin-block-end: 10px;
-      font-size: 16px;
-      line-height: 26px;
-      color: #000;
-    }
-
-    ul {
-      list-style-type: none;
-      padding-inline-start: 25px;
-    }
-
-    ul li:before {
-      content: "";
-      inset-inline-end: 16px;
-      display: block;
-      width: 5px;
-      position: relative;
-      height: 5px;
-      background-color: $primary;
-      border-radius: 50%;
-      margin-block-end: 2px;
-      inset-block-start: 16px;
-    }
-
-    ol {
-      list-style: none;
-      counter-reset: item;
-      margin-block-start: 10px;
-      padding-block-start: 10px;
-    }
-
-    ol > li {
-      position: relative;
-      counter-increment: item;
-      margin-block-end: 15px;
-      padding-inline-start: 30px;
-    }
-
-    ol > li:before {
-      position: absolute;
-      content: counter(item);
-      border-radius: 50%;
-      border: 2px solid $primary;
-      color: $primary;
-      text-align: center;
-      width: 23px;
-      height: 23px;
-      display: inline-block;
-      font-weight: 700;
-      font-size: 18px;
-      line-height: 19px;
-      vertical-align: middle;
-      letter-spacing: -1px;
-      padding-inline-end: 2px;
-      margin-inline-start: -30px;
+  .aside {
+    @include md-down {
+      display: none;
     }
   }
 }

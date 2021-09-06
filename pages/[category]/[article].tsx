@@ -86,8 +86,8 @@ const ArticlePage = ({ initialArticle }: Props) => {
         <title>{article.title}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        <article className={styles.main}>
+      <main className={styles.main}>
+        <article className={styles.content}>
           <header>
             <div className={styles.category}>
               <a href={article.category.slug}>{article.category.name}</a>
@@ -139,6 +139,7 @@ const ArticlePage = ({ initialArticle }: Props) => {
             </ReactMarkdown>
           </section>
         </article>
+        <aside className={styles.aside}>Right Rail</aside>
       </main>
     </>
   );
