@@ -79,10 +79,25 @@
   }
 
   .article {
+    a {
+      color: $primary;
+      text-decoration: underline;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    strong {
+      font-weight: bold;
+    }
+
+    em {
+      font-style: italic;
+    }
+
     h2 {
       font-size: 28px;
       font-weight: 700;
-      margin-block-start: 24px;
+      margin-block-start: 12px;
     }
 
     p {
@@ -90,6 +105,57 @@
       font-size: 16px;
       line-height: 26px;
       color: #000;
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 30px;
+    }
+
+    ul li:before {
+      content: "";
+      right: 16px;
+      display: block;
+      width: 5px;
+      position: relative;
+      height: 5px;
+      background-color: $primary;
+      border-radius: 50%;
+      margin-bottom: 2px;
+      top: 16px;
+    }
+
+    ol {
+      list-style: none;
+      counter-reset: item;
+      margin-top: 10px;
+      padding-top: 10px;
+    }
+
+    ol > li {
+      position: relative;
+      counter-increment: item;
+      margin-bottom: 15px;
+      padding-left: 30px;
+    }
+
+    ol > li:before {
+      position: absolute;
+      content: counter(item);
+      border-radius: 50%;
+      border: 2px solid $primary;
+      color: $primary;
+      text-align: center;
+      width: 23px;
+      height: 23px;
+      display: inline-block;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 19px;
+      vertical-align: middle;
+      letter-spacing: -1px;
+      padding-right: 2px;
+      margin-left: -30px;
     }
   }
 }
