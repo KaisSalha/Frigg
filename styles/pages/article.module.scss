@@ -4,6 +4,7 @@
 
 .main {
   @include container;
+  max-width: 740px;
   font-family: Roboto, sans-serif;
   margin-block-start: 1em;
 
@@ -63,7 +64,6 @@
 
         .position {
           margin-block-end: 0;
-          font-style: italic;
           font-size: 12px;
           line-height: 1;
         }
@@ -109,34 +109,34 @@
 
     ul {
       list-style-type: none;
-      padding-left: 30px;
+      padding-inline-start: 25px;
     }
 
     ul li:before {
       content: "";
-      right: 16px;
+      inset-inline-end: 16px;
       display: block;
       width: 5px;
       position: relative;
       height: 5px;
       background-color: $primary;
       border-radius: 50%;
-      margin-bottom: 2px;
-      top: 16px;
+      margin-block-end: 2px;
+      inset-block-start: 16px;
     }
 
     ol {
       list-style: none;
       counter-reset: item;
-      margin-top: 10px;
-      padding-top: 10px;
+      margin-block-start: 10px;
+      padding-block-start: 10px;
     }
 
     ol > li {
       position: relative;
       counter-increment: item;
-      margin-bottom: 15px;
-      padding-left: 30px;
+      margin-block-end: 15px;
+      padding-inline-start: 30px;
     }
 
     ol > li:before {
@@ -154,8 +154,8 @@
       line-height: 19px;
       vertical-align: middle;
       letter-spacing: -1px;
-      padding-right: 2px;
-      margin-left: -30px;
+      padding-inline-end: 2px;
+      margin-inline-start: -30px;
     }
   }
 }

@@ -40,15 +40,16 @@ const MarkdownComponents: object = {
       const height = metaHeight ? metaHeight[1] : 5;
 
       return (
-        <Image
-          src={image.properties.src}
-          width={width}
-          height={height}
-          className={styles.articleImg}
-          alt={alt}
-          priority={isPriority}
-          layout="responsive"
-        />
+        <div className={styles.articleImg}>
+          <Image
+            src={image.properties.src}
+            width={width}
+            height={height}
+            alt={alt}
+            priority={isPriority}
+            layout="responsive"
+          />
+        </div>
       );
     }
     return <p>{paragraph.children}</p>;
