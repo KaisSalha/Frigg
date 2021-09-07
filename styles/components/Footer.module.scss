@@ -5,6 +5,10 @@
 .footer {
   background-color: rgb(34, 34, 34);
 
+  a:hover {
+    color: $primary;
+  }
+
   .social {
     display: flex;
     flex-direction: row;
