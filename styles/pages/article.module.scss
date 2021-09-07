@@ -109,6 +109,15 @@
         .articleImg {
           margin-inline-start: -4em;
           margin-inline-end: -4em;
+          img {
+            border-radius: 0.75rem;
+          }
+        }
+      }
+
+      .articleImg {
+        img {
+          border-radius: 0.75rem;
         }
       }
 

@@ -35,7 +35,7 @@ export const getLayout = (page: any, settings: Settings) => {
           dark={settings?.header?.dark ?? false}
         />
         {page}
-        <Footer categories={categories} />
+        <Footer />
       </SiteLayout>
     </>
   );

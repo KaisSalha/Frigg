@@ -1,0 +1,76 @@
+@import "styles/mixins/layout.scss";
+@import "styles/mixins/breakpoints.scss";
+@import "styles/mixins/selectors.scss";
+
+.footer {
+  background-color: rgb(34, 34, 34);
+
+  .social {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.5em;
+    padding: 40px 0;
+
+    .icon {
+      width: 34px;
+      height: 34px;
+      border: 1px solid transparent;
+      border-radius: 34px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      svg {
+        color: white;
+        fill: white;
+      }
+    }
+
+    .facebook {
+      background-color: rgb(24, 119, 242);
+    }
+
+    .twitter {
+      background-color: rgb(29, 161, 242);
+    }
+
+    .instagram {
+      background-color: rgb(195, 42, 163);
+    }
+
+    .youtube {
+      background-color: rgb(255, 0, 0);
+    }
+
+    .rss {
+      background-color: rgb(125, 125, 125);
+    }
+  }
+
+  .links {
+    color: rgb(204, 204, 204);
+    font-size: 16px;
+    white-space: nowrap;
+    font-size: 15px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    line-height: 32px;
+    padding-bottom: 38px;
+    max-width: 500px;
+    margin: 0 auto;
+
+    li {
+      padding: 0 24px;
+    }
+  }
+
+  small {
+    width: 100%;
+    display: block;
+    text-align: center;
+    color: rgb(204, 204, 204);
+    padding-bottom: 52px;
+  }
+}
