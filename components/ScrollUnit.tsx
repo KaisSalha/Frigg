@@ -12,9 +12,8 @@ interface Props {
 export default function ScrollUnit({ article }: Props) {
   return (
     <Link href={`${article.category.slug}/${article.slug}`} passHref>
-      <a>
+      <a className={styles.item}>
         <section
-          className={styles.item}
           style={{
             backgroundImage: `url('${process.env.NEXT_PUBLIC_MEDIA_ENDPOINT}/${
               article.assets.find(asset => asset.asset_type.slug === "hero")

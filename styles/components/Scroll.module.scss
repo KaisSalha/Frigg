@@ -39,60 +39,64 @@
     }
 
     .item {
-      @include rounded;
-      position: relative;
-      flex-grow: 1;
-      margin: 20px 7px;
+      width: 33%;
       min-width: 280px;
-      height: 375px;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      cursor: pointer;
-      box-shadow: rgb(69 50 42 / 10%) 0px 5px 10px;
+      flex-grow: 1;
 
-      @include md {
-        min-width: 250px;
-        transform: scale(0.98);
-        transition: all 0.3s ease 0s;
-
-        &:hover {
-          transform: scale(1);
-        }
-      }
-
-      .content {
+      section {
         @include rounded;
-        position: absolute;
-        color: white;
-        inset: 0px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        padding: 20px;
-        background: linear-gradient(
-          0deg,
-          rgba(0, 0, 0, 0.8) 0%,
-          rgba(0, 0, 0, 0) 70%
-        );
+        position: relative;
+        margin: 20px 7px;
+        height: 375px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        cursor: pointer;
+        box-shadow: rgb(69 50 42 / 10%) 0px 5px 10px;
 
-        h2 {
-          font-weight: 800;
-          font-size: 1.5em;
-          line-height: 1.3;
-          margin-top: 7.5px;
-          margin-bottom: 15px;
+        @include md {
+          min-width: 250px;
+          transform: scale(0.98);
+          transition: all 0.3s ease 0s;
+
+          &:hover {
+            transform: scale(1);
+          }
         }
 
-        footer {
-          p {
-            display: flex;
-            flex-direction: row;
+        .content {
+          @include rounded;
+          position: absolute;
+          color: white;
+          inset: 0px;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          padding: 20px;
+          background: linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.8) 0%,
+            rgba(0, 0, 0, 0) 70%
+          );
 
-            time {
-              margin-inline-start: 1em;
-              opacity: 0.8;
-              color: rgb(247, 247, 247);
+          h2 {
+            font-weight: 800;
+            font-size: 1.5em;
+            line-height: 1.3;
+            margin-top: 7.5px;
+            margin-bottom: 15px;
+          }
+
+          footer {
+            p {
+              display: flex;
+              flex-direction: row;
+
+              time {
+                margin-inline-start: 1em;
+                opacity: 0.8;
+                color: rgb(247, 247, 247);
+              }
             }
           }
         }
