@@ -4,7 +4,7 @@
 @import "styles/mixins/selectors.scss";
 
 .main {
-  min-height: 60vh;
+  min-height: 50vh;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -12,7 +12,7 @@
 
   .container {
     @include container;
-    min-height: 60vh;
+    min-height: 50vh;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -29,14 +29,20 @@
     }
 
     h1 {
-      font-size: 50px;
+      font-size: 36px;
       font-weight: bold;
+      text-align: start;
+
+      @include md {
+        font-size: 52px;
+      }
     }
 
     p {
-      font-size: 24px;
+      font-size: 18px;
       margin-top: 1rem;
-      font-weight: bold;
+
+      text-align: start;
     }
   }
 
