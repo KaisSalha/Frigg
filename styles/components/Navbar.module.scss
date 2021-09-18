@@ -5,18 +5,9 @@
 .container {
   border-bottom: 1px solid #e8e8e8;
   z-index: 100;
-  color: black;
   font-family: "Helvetica Neue", Helvetica, "Segoe UI", Segoe, "Segoe WP", Arial,
     "Lucida Grande", sans-serif;
   font-weight: 500;
-
-  &--shadow {
-    background: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.12) 0%,
-      rgba(0, 0, 0, 0) 100%
-    );
-  }
 
   &--opened {
     height: 100%;
@@ -60,7 +51,7 @@
       @include md-down {
         display: block;
         font-size: 24px;
-        z-index: 30;
+        z-index: 300;
         position: absolute;
         overflow: hidden;
         inset-block-start: 0;

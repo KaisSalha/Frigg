@@ -146,11 +146,6 @@ const ArticlePage = ({ initialArticle }: Props) => {
 };
 
 ArticlePage.getLayout = getLayout;
-ArticlePage.settings = {
-  header: {
-    shadow: false
-  }
-};
 
 export default ArticlePage;
 

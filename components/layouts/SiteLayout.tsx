@@ -2,19 +2,13 @@ import Head from "next/head";
 import NavBar from "components/NavBar";
 import Footer from "components/Footer";
 
-interface Settings {
-  header?: {
-    shadow?: boolean;
-  };
-}
-
 interface Props {
   children: React.ReactNode;
 }
 
 const SiteLayout = ({ children }: Props) => <>{children}</>;
 
-export const getLayout = (page: any, settings: Settings) => {
+export const getLayout = (page: any) => {
   const { initialCategories: categories } = page.props;
 
   return (
@@ -26,10 +20,7 @@ export const getLayout = (page: any, settings: Settings) => {
         />
       </Head>
       <SiteLayout>
-        <NavBar
-          categories={categories}
-          shadow={settings?.header?.shadow ?? true}
-        />
+        <NavBar categories={categories} />
         {page}
         <Footer />
       </SiteLayout>

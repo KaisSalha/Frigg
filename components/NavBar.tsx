@@ -9,14 +9,13 @@ import { Category } from "types";
 
 interface Props {
   categories: Category[] | undefined;
-  shadow: boolean;
 }
 
 function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Header({ categories, shadow }: Props) {
+export default function Header({ categories }: Props) {
   const router = useRouter();
   const [opened, setOpened] = useState<boolean>(false);
 
@@ -41,7 +40,6 @@ export default function Header({ categories, shadow }: Props) {
     <header
       className={classNames(
         styles.container,
-        shadow ? styles["container--shadow"] : "",
         opened ? styles["container--opened"] : ""
       )}
     >
@@ -70,7 +68,9 @@ export default function Header({ categories, shadow }: Props) {
             {categories &&
               categories.map(c => (
                 <li key={c.id}>
-                  <a onClick={e => linkClick(e, `/${c.slug}`)}>{c.name}</a>
+                  <Link href={`/${c.slug}`} passHref>
+                    <a>{c.name}</a>
+                  </Link>
                 </li>
               ))}
           </ul>
