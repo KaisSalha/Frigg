@@ -148,9 +148,7 @@ const ArticlePage = ({ initialArticle }: Props) => {
 ArticlePage.getLayout = getLayout;
 ArticlePage.settings = {
   header: {
-    floating: false,
-    shadow: false,
-    dark: true
+    shadow: false
   }
 };
 

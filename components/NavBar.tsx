@@ -9,8 +9,6 @@ import { Category } from "types";
 
 interface Props {
   categories: Category[] | undefined;
-  floating: boolean;
-  dark: boolean;
   shadow: boolean;
 }
 
@@ -18,7 +16,7 @@ function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Header({ categories, floating, dark, shadow }: Props) {
+export default function Header({ categories, shadow }: Props) {
   const router = useRouter();
   const [opened, setOpened] = useState<boolean>(false);
 
@@ -43,10 +41,8 @@ export default function Header({ categories, floating, dark, shadow }: Props) {
     <header
       className={classNames(
         styles.container,
-        floating ? styles["container--floating"] : "",
         shadow ? styles["container--shadow"] : "",
-        opened ? styles["container--opened"] : "",
-        dark ? styles["container--dark"] : ""
+        opened ? styles["container--opened"] : ""
       )}
     >
       <nav className={styles.nav}>
@@ -109,7 +105,7 @@ export default function Header({ categories, floating, dark, shadow }: Props) {
               d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
             />
           </svg>
-          <LocaleDropdown dark={dark} />
+          <LocaleDropdown />
         </section>
       </nav>
     </header>

@@ -4,9 +4,7 @@ import Footer from "components/Footer";
 
 interface Settings {
   header?: {
-    floating?: boolean;
     shadow?: boolean;
-    dark?: boolean;
   };
 }
 
@@ -30,9 +28,7 @@ export const getLayout = (page: any, settings: Settings) => {
       <SiteLayout>
         <NavBar
           categories={categories}
-          floating={settings?.header?.floating ?? true}
           shadow={settings?.header?.shadow ?? true}
-          dark={settings?.header?.dark ?? false}
         />
         {page}
         <Footer />

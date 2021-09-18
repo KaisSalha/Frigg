@@ -4,15 +4,11 @@ import { ChevronDownIcon } from "@heroicons/react/solid";
 import { useRouter } from "next/router";
 import styles from "styles/components/LocaleDropdown.module.scss";
 
-interface Props {
-  dark: boolean;
-}
-
 function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(" ");
 }
 
-const LocaleDropdown = ({ dark }: Props) => {
+const LocaleDropdown = () => {
   const router = useRouter();
   const { locale: active, locales } = router;
 
@@ -21,12 +17,7 @@ const LocaleDropdown = ({ dark }: Props) => {
       {({ open }) => (
         <>
           <>
-            <Menu.Button
-              className={classNames(
-                styles.button,
-                dark ? styles["button--dark"] : ""
-              )}
-            >
+            <Menu.Button className={classNames(styles.button)}>
               {active == "ar" ? "عر" : active}
 
               <ChevronDownIcon className={styles.icon} aria-hidden="true" />
@@ -42,29 +33,25 @@ const LocaleDropdown = ({ dark }: Props) => {
             leaveFrom="transform opacity-100 scale-100"
             leaveTo="transform opacity-0 scale-95"
           >
-            <Menu.Items
-              static
-              className={classNames(
-                styles.dropdown,
-                dark ? "" : styles["dropdown--dark"]
-              )}
-            >
-              {locales?.map(locale => (
-                <Menu.Item key={locale}>
-                  {() => (
-                    <a href={locale == "en" ? "/" : `/${locale}`}>
-                      <div
-                        className={classNames(
-                          locale == active ? styles.active : styles.inactive,
-                          styles.item
-                        )}
-                      >
-                        {locale == "ar" ? "عر" : locale}
-                      </div>
-                    </a>
-                  )}
-                </Menu.Item>
-              ))}
+            <Menu.Items static className={classNames(styles.dropdown)}>
+              {locales
+                ?.filter(locale => locale !== active)
+                .map(locale => (
+                  <Menu.Item key={locale}>
+                    {() => (
+                      <a href={locale == "en" ? "/" : `/${locale}`}>
+                        <div
+                          className={classNames(
+                            locale == active ? styles.active : styles.inactive,
+                            styles.item
+                          )}
+                        >
+                          {locale == "ar" ? "عر" : locale}
+                        </div>
+                      </a>
+                    )}
+                  </Menu.Item>
+                ))}
             </Menu.Items>
           </Transition>
         </>
