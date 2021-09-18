@@ -27,15 +27,6 @@ export default function Header({ categories }: Props) {
     setOpened(!opened);
   };
 
-  const linkClick = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    href: URL | string
-  ) => {
-    e.preventDefault();
-    setOpened(false);
-    router.push(href);
-  };
-
   return (
     <header
       className={classNames(
