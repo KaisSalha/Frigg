@@ -21,9 +21,7 @@ export default function ScrollUnit({ article }: Props) {
                 article.assets.find(asset => asset.asset_type.slug === "hero")
                   ?.cdn_url
               }`}
-              layout="fixed"
-              width={300}
-              height={200}
+              layout="fill"
               alt="test"
             />
           </div>
@@ -32,6 +30,14 @@ export default function ScrollUnit({ article }: Props) {
               <h2>{article.title}</h2>
             </header>
             <p>{article.lead}</p>
+            <footer>
+              <address>
+                <a href="#" rel="author">
+                  {article.author.name}
+                </a>
+              </address>
+              {<LocalizedDate date={article.created_at} />}
+            </footer>
           </section>
         </article>
       </a>
