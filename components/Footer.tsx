@@ -5,27 +5,27 @@ export default function Footer() {
   const links = [
     {
       text: "Sitemap",
-      url: "google.com"
+      url: "https://google.com"
     },
     {
       text: "About",
-      url: "google.com"
+      url: "https://google.com"
     },
     {
       text: "Privacy",
-      url: "google.com"
+      url: "https://google.com"
     },
     {
       text: "Terms",
-      url: "google.com"
+      url: "https://google.com"
     },
     {
       text: "Advertising",
-      url: "google.com"
+      url: "https://google.com"
     },
     {
       text: "Jobs",
-      url: "google.com"
+      url: "https://google.com"
     }
   ];
 

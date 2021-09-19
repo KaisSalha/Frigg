@@ -11,7 +11,7 @@ interface Props {
 
 export default function ScrollUnit({ article }: Props) {
   return (
-    <Link href={`${article.category.slug}/${article.slug}`} passHref>
+    <Link href={`/${article.category.slug}/${article.slug}`} passHref>
       <a className={styles.item}>
         <section
           style={{

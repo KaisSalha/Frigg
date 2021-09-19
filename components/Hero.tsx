@@ -28,7 +28,7 @@ export default function Hero({
         backgroundImage: image
       }}
     >
-      <heading
+      <header
         className={classNames(
           styles.container,
           position == "center" ? styles["container--padded"] : ""
@@ -41,7 +41,7 @@ export default function Hero({
       >
         {title && <h1>{title}</h1>}
         {description && <p>{description}</p>}
-      </heading>
+      </header>
       {shade && (
         <div
           className={styles.shade}

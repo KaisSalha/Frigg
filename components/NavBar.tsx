@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { useRouter } from "next/router";
 import Link from "next/link";
 import styles from "styles/components/Navbar.module.scss";
 import LocaleDropdown from "components/LocaleDropdown";
@@ -16,7 +15,6 @@ function classNames(...classes: string[]): string {
 }
 
 export default function Header({ categories }: Props) {
-  const router = useRouter();
   const [opened, setOpened] = useState<boolean>(false);
 
   useEffect(() => {
@@ -67,21 +65,44 @@ export default function Header({ categories }: Props) {
           </ul>
         </section>
         <section className={styles.right}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className={classNames(styles.menu_btn, "h-6 w-6")}
-            onClick={toggleMenu}
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M4 6h16M4 10h16M4 14h16M4 18h16"
-            />
-          </svg>
+          {opened ? (
+            <button
+              className={classNames(styles.menu_btn, "h-6 w-6")}
+              onClick={toggleMenu}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          ) : (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className={classNames(styles.menu_btn, "h-6 w-6")}
+              onClick={toggleMenu}
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 10h16M4 14h16M4 18h16"
+              />
+            </svg>
+          )}
+
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6"
