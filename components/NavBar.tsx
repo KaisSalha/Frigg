@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "styles/components/Navbar.module.scss";
 import LocaleDropdown from "components/LocaleDropdown";
-
+import { useRouter } from "next/router";
 import { Category } from "types";
 
 interface Props {
@@ -15,12 +15,22 @@ function classNames(...classes: string[]): string {
 }
 
 export default function Header({ categories }: Props) {
+  const router = useRouter();
   const [opened, setOpened] = useState<boolean>(false);
 
   useEffect(() => {
     document.body.style.position = opened ? "fixed" : "relative";
     document.body.style.overflowY = opened ? "hidden" : "scroll";
   }, [opened]);
+
+  const openCategory = (
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    slug: string
+  ) => {
+    e.preventDefault();
+    router.push(slug);
+    toggleMenu();
+  };
 
   const toggleMenu = () => {
     setOpened(!opened);
@@ -58,9 +68,9 @@ export default function Header({ categories }: Props) {
             {categories &&
               categories.map(c => (
                 <li key={c.id}>
-                  <Link href={`/${c.slug}`} passHref>
-                    <a>{c.name}</a>
-                  </Link>
+                  <a href={`/${c.slug}`} onClick={e => openCategory(e, c.slug)}>
+                    {c.name}
+                  </a>
                 </li>
               ))}
           </ul>
