@@ -19,8 +19,9 @@ export default function Header({ categories }: Props) {
   const [opened, setOpened] = useState<boolean>(false);
 
   useEffect(() => {
-    document.body.style.position = opened ? "fixed" : "relative";
-    document.body.style.overflowY = opened ? "hidden" : "auto";
+    opened
+      ? document.body.classList.add("menuOpened")
+      : document.body.classList.remove("menuOpened");
   }, [opened]);
 
   const openCategory = (

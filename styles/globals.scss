@@ -1,3 +1,4 @@
+@import "styles/mixins/breakpoints.scss";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -21,4 +22,11 @@ img {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+.menuOpened {
+  @include md-down {
+    position: fixed;
+    overflow-y: hidden;
+  }
 }
