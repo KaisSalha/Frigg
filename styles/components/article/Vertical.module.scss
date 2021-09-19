@@ -57,14 +57,23 @@
     }
 
     section {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
       padding: 18px;
       width: 100%;
 
+      & > * {
+        margin-block-end: 1em;
+      }
+
       @include md {
         padding: 12px;
+        min-height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        & > * {
+          margin-block-end: 0;
+        }
       }
 
       header {
