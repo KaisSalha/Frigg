@@ -19,6 +19,7 @@ export default function Header({ categories }: Props) {
 
   useEffect(() => {
     document.body.style.position = opened ? "fixed" : "relative";
+    document.body.style.overflowY = opened ? "hidden" : "scroll";
   }, [opened]);
 
   const toggleMenu = () => {
