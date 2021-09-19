@@ -28,7 +28,7 @@ export default function Header({ categories }: Props) {
     slug: string
   ) => {
     e.preventDefault();
-    router.push(slug);
+    router.push(`/${slug}`);
     toggleMenu();
   };
 
