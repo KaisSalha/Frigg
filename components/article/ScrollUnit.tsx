@@ -1,5 +1,5 @@
 import Link from "next/link";
-import styles from "styles/components/Scroll.module.scss";
+import styles from "styles/components/article/Scroll.module.scss";
 
 import LocalizedDate from "components/LocalizedDate";
 

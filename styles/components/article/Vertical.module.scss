@@ -1,0 +1,60 @@
+@import "styles/mixins/layout.scss";
+@import "styles/mixins/breakpoints.scss";
+@import "styles/mixins/rounded.scss";
+@import "styles/mixins/selectors.scss";
+
+.container {
+  .title {
+    font-size: 26px;
+    font-weight: 500;
+    border-bottom: 1px solid rgb(177, 183, 197);
+    padding-bottom: 12px;
+    margin-bottom: 24px;
+  }
+
+  @include md {
+    margin-inline-end: 1em;
+  }
+
+  article {
+    @include rounded;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin: 2em 0;
+    box-shadow: 0 0 1px 0 rgb(21 21 21 / 0%), 0 2px 8px -1px rgb(21 21 21 / 0%);
+    cursor: pointer;
+
+    transition: border-color 0.2s ease-in, box-shadow 0.2s ease-in,
+      color 0.2s ease-in;
+
+    &:hover {
+      box-shadow: 0 0 4px 0 rgb(21 21 21 / 14%),
+        0 16px 20px -5px rgb(21 21 21 / 18%);
+
+      header {
+        color: $primary;
+      }
+    }
+
+    @include md {
+      flex-direction: row;
+    }
+
+    .hero {
+      width: 300px;
+      height: 200px;
+    }
+
+    section {
+      padding: 12px;
+
+      header {
+        font-weight: 700;
+        font-size: 20px;
+        margin-block-end: 12px;
+      }
+    }
+  }
+}

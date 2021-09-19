@@ -1,7 +1,7 @@
 import { GetStaticProps } from "next";
 
 import Head from "next/head";
-import ScrollList from "components/ScrollList";
+import ScrollList from "components/article/ScrollList";
 import Hero from "components/Hero";
 import styles from "styles/layout/main.module.scss";
 

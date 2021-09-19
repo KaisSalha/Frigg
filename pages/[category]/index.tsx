@@ -2,9 +2,10 @@ import { GetStaticProps, GetStaticPaths } from "next";
 import DefaultErrorPage from "next/error";
 
 import Head from "next/head";
-import ScrollList from "components/ScrollList";
-import styles from "styles/layout/main.module.scss";
+import styles from "styles/pages/category.module.scss";
 import Hero from "components/Hero";
+
+import SideList from "components/SideList";
 
 import { getCategories } from "pages/api/[locale]/categories/index";
 import { getArticles } from "pages/api/[locale]/articles/index";
@@ -22,6 +23,8 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import { Article, Category } from "types";
 
+import VerticalList from "components/article/VerticlList";
+
 interface Props {
   initialCategory: Category;
   initialArticles: Article[];
@@ -38,6 +41,17 @@ const CategoryPage = ({ initialCategory, initialArticles }: Props) => {
 
   const { articles } = useArticles(initialArticles, locale, category?.id);
 
+  const test = [
+    {
+      title: "Home Improvement Loan Rates",
+      url: "moneywise.com"
+    },
+    {
+      title: "Low Interest Loan Rates",
+      url: "moneywise.com"
+    }
+  ];
+
   if (!category) return <DefaultErrorPage statusCode={404} />;
   return (
     <>
@@ -53,11 +67,16 @@ const CategoryPage = ({ initialCategory, initialArticles }: Props) => {
         shade={0.6}
       />
       <main className={styles.main}>
-        <div className={styles.container}>
-          {articles && (
-            <ScrollList articles={articles} title={t("latest-articles")} />
-          )}
-        </div>
+        <section className={styles.container}>
+          <div className={styles.left}>
+            {articles && (
+              <VerticalList title={t("whatsnew")} articles={articles} />
+            )}
+          </div>
+          <div className={styles.right}>
+            <SideList title="Related Topics" links={test} />
+          </div>
+        </section>
       </main>
     </>
   );

@@ -1,0 +1,21 @@
+@import "styles/mixins/layout.scss";
+@import "styles/mixins/breakpoints.scss";
+
+.main {
+  z-index: 30;
+  position: relative;
+  background: white;
+  width: 100%;
+  overflow: auto;
+}
+
+.container {
+  @include container;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  margin-block-start: 1em;
+
+  @include lg-down {
+    grid-template-columns: 1fr;
+  }
+}

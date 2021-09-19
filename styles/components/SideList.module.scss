@@ -1,0 +1,19 @@
+@import "styles/mixins/layout.scss";
+@import "styles/mixins/breakpoints.scss";
+@import "styles/mixins/selectors.scss";
+
+.container {
+  header {
+    font-size: 26px;
+    font-weight: 700;
+    border-bottom: 1px solid rgb(177, 183, 197);
+    padding-bottom: 12px;
+    margin-bottom: 24px;
+  }
+
+  li {
+    @include hover;
+    font-weight: 500;
+    margin-bottom: 24px;
+  }
+}
